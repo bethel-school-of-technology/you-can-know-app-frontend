@@ -22,7 +22,7 @@ const App = () => {
     <div className="container">
       <Header title='Welcome To: "You Can Know!"'/>
       <Header subtitle='Your Destination Is Calling You!"'/>
-
+      <p>having fun with github</p>
       <NavBar />
       <Route exact path='/' component={Home} />
       <Route exact path='/signup' component={Signup} />
