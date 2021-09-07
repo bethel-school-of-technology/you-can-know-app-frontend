@@ -42,7 +42,7 @@ Y.C.K. <i className="fab fa-typo3" />
     </Link>
 </li>
 <li className="nav-item">
-    <Link to="/sign-up" className="nav-links" 
+    <Link to="/sign-up" className="nav-links-mobile" 
     onClick={closeMobileMenu}>
         Sign Up
     </Link>
@@ -78,7 +78,7 @@ Y.C.K. <i className="fab fa-typo3" />
     </Link>
 </li>
 </ul>
-{Button && <Button buttonStyle="btn--outline">Home</Button>}
+{Button && <Button buttonStyle="btn--outline">Sign Up</Button>}
 </div>
 </nav>       
 </>
