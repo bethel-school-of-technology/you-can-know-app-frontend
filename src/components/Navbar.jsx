@@ -42,14 +42,24 @@ Y.C.K. <i className="fab fa-typo3" />
     </Link>
 </li>
 <li className="nav-item">
-    <Link to="/create-new-account" className="nav-links-mobile" 
+    <Link to="/sign-up" className="nav-links" 
     onClick={closeMobileMenu}>
-        Create New Account
+        Sign Up
     </Link>
 </li>
 <li className="nav-item">
     <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
         Login
+    </Link>
+</li>
+<li className="nav-item">
+    <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
+       Profile
+    </Link>
+</li>
+<li className="nav-item">
+    <Link to="/destinations" className="nav-links" onClick={closeMobileMenu}>
+        Destinations
     </Link>
 </li>
 <li className="nav-item">
@@ -68,7 +78,7 @@ Y.C.K. <i className="fab fa-typo3" />
     </Link>
 </li>
 </ul>
-{Button && <Button buttonStyle="btn--outline">CREATE NEW ACCOUNT</Button>}
+{Button && <Button buttonStyle="btn--outline">Home</Button>}
 </div>
 </nav>       
 </>

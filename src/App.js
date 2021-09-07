@@ -6,6 +6,8 @@ import Home from './components/pages/Home';
 import Navbar from './components/Navbar';
 import SignUp from './components/pages/SignUp';
 import Login from './components/pages/Login';
+// import Search from './components/pages/Search';
+
 
 
 const App = () => {
