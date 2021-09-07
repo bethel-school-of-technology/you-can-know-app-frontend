@@ -4,6 +4,8 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Navbar from './components/Navbar';
+import SignUp from './components/pages/SignUp';
+import Login from './components/pages/Login';
 
 const App = () => {
 //const title = 'You Can Know!'
@@ -17,6 +19,8 @@ const App = () => {
         <Route exact path="/">
         <Redirect to="/home" />
         </Route>
+        <Route path='/signup' component={SignUp} />
+        <Route path='/login' component={Login} />
       </Switch>
       </Router>
       </>
