@@ -1,25 +1,25 @@
 import React from 'react';
-import Boxitem from './Boxitem';
-import './Boxes.css';
+import Carditem from './Carditem';
+import './Cards.css';
+import image from '../images/FireWaterTownRe.jpg';
 
-function Boxes() {
+function Cards() {
     return (
-        <div className='boxes'>
+        <div className='cards'>
         <h1>"Oh The Places You Could Go!"</h1>
-        <div className="boxes__container">
-        <div className="boxes__wrapper">
-        <ul className="boxes__items">
+        <div className="cards__container">
+        <div className="cards__wrapper">
+        <ul className="cards__items">
 
-            <Boxitem 
-            src='images/FireWaterTownRe.jpg' 
+            <Carditem
+            src={image} 
             text='Planning To Take A Trip To Europe?'
             label='Explore!'
             path='/Destinations'
             />
-
             {/* Image below is from zarpo magazine */}
             {/* https://magazine.zarpo.com.br/praias-do-rio-de-janeiro/ */}
-            <Boxitem 
+            <Carditem
             src='images/pdp_zarpo-2.png' 
             text='Beautiful Brazil! 
             Glorious, Wonders Brazil offers!'
@@ -27,7 +27,7 @@ function Boxes() {
             label='FUN!'
             path='/Destinations'
             />
-            <Boxitem 
+            <Carditem
             src='images/Balloons-j-bezanger.jpg' 
             text='Up Up And Away! 
             The Sky Is The Limit!'
@@ -41,4 +41,4 @@ function Boxes() {
     );
 }
 
-export default Boxes;
+export default Cards;

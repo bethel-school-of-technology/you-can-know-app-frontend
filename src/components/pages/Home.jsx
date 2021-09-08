@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import Header from '../Header';
-import Boxes from '../Boxes';
+import Cards from '../Cards';
 // import SignUp from '../SignUp';
 // import '../../../public/images/Balloons-j-bezanger.';
 
@@ -12,7 +12,7 @@ const Home = (props) => {
         {/* <img src='public/images/Balloons-j-bezanger.jpg' /> */}
 
         <Header />
-        <Boxes />
+        <Cards />
         <div>
             You Can Know(c) 2021
         </div>
