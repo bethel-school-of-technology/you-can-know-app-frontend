@@ -9,6 +9,7 @@ function Header() {
     <div className='header-container'>
     <image src='public/images/Balloons-jeremy-bezanger.jpg' />
       <h1>WELCOME TO: "YOU CAN KNOW!"</h1>
+      
       <p>YOUR JOURNEY BEGINS HERE!</p>
       <div className='header-btns'>
         <Button
