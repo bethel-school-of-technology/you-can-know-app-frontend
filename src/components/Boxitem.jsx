@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Boxes.css';
 
 
 function Boxitem(props) {
@@ -12,7 +13,7 @@ function Boxitem(props) {
         className='boxes_item_img'/>
         </figure>
         <div className='boxes_item_info'>
-        <h5 className='boxes_item_text' >{}</h5>
+        <h5 className='boxes_item_text' >{props.text}</h5>
             
         </div>
     </Link>
