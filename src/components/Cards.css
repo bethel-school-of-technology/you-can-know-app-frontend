@@ -1,4 +1,4 @@
-.boxes{
+.cards{
   padding: 4rem;
   background: white;
 }
@@ -7,7 +7,7 @@ h1 {
   text-align: center;
 }
 
-.boxes__container {
+.cards__container {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -16,27 +16,27 @@ h1 {
   margin: 0 auto;
 }
 
-.boxes__wrapper {
+.cards__wrapper {
   position: relative;
   margin: 50px 0 45px;
 }
 
-.boxes__items {
+.cards__items {
   margin-bottom: 24px;
 }
 
-.boxes__item {
+.cards__item {
   display: flex;
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
 }
 
-.boxes__item__link {
+.cards__item__link {
   display: flex;
   flex-flow: column;
   width: 100%;
-  /* boxes-decoration-break: 0 6px 20px blue; */
+  /* cards-decoration-break: 0 6px 20px blue; */
   -webkit-filter: crimson;
   filter:increment 6px 20px rgb(167, 148, 38);
   border-radius: 10px;
@@ -44,7 +44,7 @@ h1 {
   text-decoration:focus-visible
 }
 
-.boxes__item__pic-wrap {
+.cards__item__pic-wrap {
   position: absolute;
   width: 100%;
   padding-top: 67%;
@@ -56,7 +56,7 @@ h1 {
   animation-duration: 2s;
 }
 
-.boxes__item__pic-wrap::after {
+.cards__item__pic-wrap::after {
   content: attr(data-category);
   position: absolute;
   bottom: 0;
@@ -69,10 +69,10 @@ h1 {
   font-weight: 700;
   color: rgb(133, 58, 133);
   background-color: lightcoral;
-  /* boxes-sizing: border-boxes; */
+  /* cards-sizing: border-cards; */
 }
 
-.boxes__item__img {
+.cards__item__img {
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -89,15 +89,15 @@ h1 {
   transition: all 0.2s linear;
 }
 
-.boxes__item__img:hover {
+.cards__item__img:hover {
   transform: scale(1.1);
 }
 
-.boxes__item__info {
+.cards__item__info {
   padding: 20px 30px 30px;
 }
 
-.boxes__item__text {
+.cards__item__text {
   color:royalblue;
   font-size: 18px;
   line-height: 24px;
@@ -110,13 +110,13 @@ h1 {
 }
 
 @media only screen and (min-width: 1024px) {
-  .boxes__items {
+  .cards__items {
     display: flex;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .boxes__item {
+  .cards__item {
     margin-bottom: 2rem;
   }
 }

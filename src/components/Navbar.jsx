@@ -42,7 +42,7 @@ Y.C.K. <i className="fab fa-typo3" />
     </Link>
 </li>
 <li className="nav-item">
-    <Link to="/sign-up" className="nav-links" 
+    <Link to="/signup" className="nav-links" 
     onClick={closeMobileMenu}>
         Sign Up
     </Link>
