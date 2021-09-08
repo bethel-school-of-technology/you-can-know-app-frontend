@@ -9,10 +9,29 @@ function Boxes() {
         <div className="boxes__container">
         <div className="boxes__wrapper">
         <ul className="boxes__items">
+
             <Boxitem 
-            src='images/img-7.jpg' 
-            text='Taking A Trip To Europe?'
-            label='Journey'
+            src='images/FireWaterTownRe.jpg' 
+            text='Planning To Take A Trip To Europe?'
+            label='Explore!'
+            path='/Destinations'
+            />
+
+            {/* Image below is from zarpo magazine */}
+            {/* https://magazine.zarpo.com.br/praias-do-rio-de-janeiro/ */}
+            <Boxitem 
+            src='images/pdp_zarpo-2.png' 
+            text='Beautiful Brazil! 
+            Glorious, Wonders Brazil offers!'
+            // text2= 'Where better to began your adventure than on the beaches of Brazil!  '
+            label='FUN!'
+            path='/Destinations'
+            />
+            <Boxitem 
+            src='images/Balloons-j-bezanger.jpg' 
+            text='Up Up And Away! 
+            The Sky Is The Limit!'
+            label='FUN!'
             path='/Destinations'
             />
         </ul>
