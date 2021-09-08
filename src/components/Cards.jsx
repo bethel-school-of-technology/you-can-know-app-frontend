@@ -2,6 +2,8 @@ import React from 'react';
 import Carditem from './Carditem';
 import './Cards.css';
 import image from '../images/FireWaterTownRe.jpg';
+import image2 from '../images/Food.jpg';
+import image3 from '../images/Balloons-j-bezanger.jpg';
 
 function Cards() {
     return (
@@ -20,15 +22,15 @@ function Cards() {
             {/* Image below is from zarpo magazine */}
             {/* https://magazine.zarpo.com.br/praias-do-rio-de-janeiro/ */}
             <Carditem
-            src='images/pdp_zarpo-2.png' 
+            src={image2} 
             text='Beautiful Brazil! 
             Glorious, Wonders Brazil offers!'
             // text2= 'Where better to began your adventure than on the beaches of Brazil!  '
-            label='FUN!'
+            label='CUISINE!'
             path='/Destinations'
             />
             <Carditem
-            src='images/Balloons-j-bezanger.jpg' 
+            src={image3} 
             text='Up Up And Away! 
             The Sky Is The Limit!'
             label='FUN!'
