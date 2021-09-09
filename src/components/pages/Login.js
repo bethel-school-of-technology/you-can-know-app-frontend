@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -10,7 +11,7 @@ const Login = () => {
             <label>Password:</label>
             <input></input>
             <br></br>
-            <button>Login</button>
+            <Link to="/profile"><button>Login</button></Link>
         </div>
     )
 }
