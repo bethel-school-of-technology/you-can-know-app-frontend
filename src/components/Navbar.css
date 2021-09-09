@@ -20,6 +20,7 @@
 }
 
 .navbar-logo {
+  background-image: url('/src/images/YCKBlue.png');
   color: crimson;
   justify-self: start;
   margin-left: 20px;
@@ -52,7 +53,7 @@
 }
 
 .nav-links {
-  color: royalblue;
+  color: white;
   display: flex;
   align-items: center;
   text-decoration: none;

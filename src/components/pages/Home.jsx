@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.css';
 import Header from '../Header';
 import Cards from '../Cards';
+import Footer from '../Footer';
 
 
 const Home = (props) => {
@@ -10,8 +11,10 @@ const Home = (props) => {
 
         <Header />
         <Cards />
+        <Footer />
+
         <div>
-            YCK,Tsalach(c) 2021
+            Y.C.K,Tsalach(c) 2021
         </div>
 
     </>

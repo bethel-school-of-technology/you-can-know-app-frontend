@@ -4,6 +4,8 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Navbar from './components/Navbar';
+import Destinations from './components/pages/Destinations';
+import About from './components/pages/About';
 import SignUp from './components/pages/SignUp';
 import Login from './components/pages/Login';
 
@@ -20,6 +22,8 @@ const App = () => {
         <Route exact path="/">
         <Redirect to="/home" />
         </Route>
+        <Route path='/destinations' component={Destinations} />
+        <Route path='/about' component={About} />
         <Route path='/signup' component={SignUp} />
         <Route path='/login' component={Login} />
       </Switch>
