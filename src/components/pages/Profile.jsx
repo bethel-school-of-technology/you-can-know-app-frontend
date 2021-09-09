@@ -8,7 +8,8 @@ import "./Navbar.css";
 function Profile() {
     return (
         <div className='navbar-container'>
-            <h1>W
+            <h1>
+                Profile Page!
             </h1>
         </div>
     )

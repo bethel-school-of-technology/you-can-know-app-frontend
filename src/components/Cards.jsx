@@ -1,7 +1,7 @@
 import React from 'react';
 import Carditem from './Carditem';
 import './Cards.css';
-import image from '../images/FireWaterTownRe.jpg';
+import image from '../images/Beach.jpg';
 import image2 from '../images/Food.jpg';
 import image3 from '../images/Balloons-j-bezanger.jpg';
 
@@ -15,16 +15,16 @@ function Cards() {
 
             <Carditem
             src={image} 
-            text='Planning To Take A Trip To Europe?'
-            label='Explore!'
+            text='Planning To Take A Trip!'
+            label='EXPLORE!'
             path='/Destinations'
             />
             {/* Image below is from zarpo magazine */}
             {/* https://magazine.zarpo.com.br/praias-do-rio-de-janeiro/ */}
             <Carditem
             src={image2} 
-            text='Beautiful Brazil! 
-            Glorious, Wonders Brazil offers!'
+            text='Beautiful, 
+            Glorious, Wonders The World Has to Offer!'
             // text2= 'Where better to began your adventure than on the beaches of Brazil!  '
             label='CUISINE!'
             path='/Destinations'
