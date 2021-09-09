@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from "react-router-dom";
+import axios from "axios";
 
-const SignUp = () => {
+const SignUp = ({history}) => {
+
+  const [firstName, setFirstName] = useState("");
+  console.log(firstName)
+
+  const url="http://localhost:3002/users";
+
+  const createUser = async (e) => {
+    e.preventDefault();
+    let newUser = {
+      firstName: firstName
+    }
+    let response = await axios.post(`${url}/signup`,newUser)
+    console.log(response.data)
+    if (response.data.status === 200) {
+      // Need to store jwt in localstorage
+      localStorage.setItem("youknow", response.data.jwt);
+      window.alert(response.data.message);
+      history.push("/profile");
+    } else {
+      window.alert(response.data.message);
+      history.push("/");
+    }
+  }
+
   return (
-    <form className="container">
+    <form className="container" onSubmit={createUser}>
       <h1>Welcome! Signup to Get Started!</h1>
       <br></br>
       <label>First Name:</label>
-      <input></input>
+      <input onChange={(e)=>setFirstName(e.target.value)} />
       <br></br>
       <label>Last Name:</label>
       <input></input>
@@ -21,11 +46,10 @@ const SignUp = () => {
       <label>Password:</label>
       <input></input>
       <br></br>
-      <Link to="/login"><button>Sign Up</button></Link>
+      <button type="submit">Sign Up</button>
+      <Link to="/login">Go to Login</Link>
     </form>
-  )
-   
-  
+  )  
 };
 
 export default SignUp;

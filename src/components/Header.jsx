@@ -8,7 +8,7 @@ import '../App.css';
 function Header() {
   return (
     <div className='header-container'>
-    <images src='./Balloons-j-bezanger.jpg' />
+    <img src='./Balloons-j-bezanger.jpg' />
 
       <h1>WELCOME TO: "YOU CAN KNOW!"</h1>
       <p>YOUR JOURNEY BEGINS HERE!</p>
