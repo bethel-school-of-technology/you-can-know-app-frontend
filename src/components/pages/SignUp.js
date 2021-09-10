@@ -29,7 +29,7 @@ const SignUp = ({history}) => {
       localStorage.setItem("youknow", response.data.jwt);
       history.push("/profile");
     } else {
-      history.push("/");
+      history.push("/login");
     }
   }
 
@@ -58,4 +58,10 @@ const SignUp = ({history}) => {
 };
 
 export default SignUp;
+
+
+
+
+
+
 
