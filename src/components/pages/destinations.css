@@ -1,0 +1,89 @@
+image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    box-shadow: inset 0 0 0 1000px black;
+  
+  }
+  
+  .video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+  
+  .destinations-container {
+    background-image: url('/src/images/HillCityR-g-angel.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+  }
+  
+  .destinations-container > h1 {
+    color: crimson;
+    font-size: 100px;
+    margin-top: -100px;
+  }
+  
+  .destinations-container > p {
+    margin-top: 10px;
+    color: white;
+    font-size: 50px;
+    font-family:  
+    Georgia, 
+    'Times New Roman', 
+    Times, 
+    serif, 
+    'Gothic medium',
+    'Filmotype Western Regular';
+  }
+  
+  .destinations-btns {
+    margin-top: 32px;
+  }
+  
+  .destinations-btns .btn {
+    margin: 6px;
+  }
+  
+  .fa-play-circle {
+    margin-left: 4px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    .destinations-container > h1 {
+      font-size: 70px;
+      margin-top: -150px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .destinations-container > h1 {
+      font-size: 50px;
+      margin-top: -100px;
+    }
+  
+    .destinations-container > p {
+      font-size: 30px;
+    }
+  
+    .btn-mobile {
+      display: block;
+      box-shadow: inset 0 0 0 100px black;
+      text-decoration: none;
+    }
+  
+    .btn {
+      box-shadow: inset 0 0 0 100px black;
+      width: 100%;
+    }
+  }

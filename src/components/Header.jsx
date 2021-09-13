@@ -2,13 +2,17 @@ import React from 'react';
 import { Button } from './Button';
 import './Header.css';
 import '../App.css';
+// import Navbar from './Navbar';
+
 // import images from 'react-router-dom';
 
 
 function Header() {
   return (
+    <>
+    {/* <Navbar /> */}
     <div className='header-container'>
-    <img src='./Balloons-j-bezanger.jpg' />
+    <img src='./Balloons-j-bezanger.jpg' alt=""/>
 
       <h1>WELCOME TO: "YOU CAN KNOW!"</h1>
       <p>YOUR JOURNEY BEGINS HERE!</p>
@@ -29,6 +33,7 @@ function Header() {
         </Button>
       </div>
     </div>
+    </>
   );
 }
 
