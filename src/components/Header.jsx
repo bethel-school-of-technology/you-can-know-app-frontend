@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from './Button';
 import './Header.css';
 import '../App.css';
-// import Navbar from './Navbar';
 
 // import images from 'react-router-dom';
 
@@ -10,7 +9,6 @@ import '../App.css';
 function Header() {
   return (
     <>
-    {/* <Navbar /> */}
     <div className='header-container'>
     <img src='./Balloons-j-bezanger.jpg' alt=""/>
 

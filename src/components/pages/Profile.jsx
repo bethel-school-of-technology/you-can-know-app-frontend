@@ -1,72 +1,70 @@
-import "./profile.css";
+import React, { useState } from 'react';
+import {Link} from "react-router-dom";
+import axios from "axios";
 import '../../App.css';
 
-//import Tpbar from "../../components/tpbar/Tpbar";
-//import Sidebar from "../../components/sidebar/Sidebar";
-// import Feed from "../../components/feed/Feed";
-//import Rightbar from "../../components/rightbar/Rightbar";
 
-function Profile() {
-  return (
-    <>
-      <div className="userprofile">
+const Profile = ({history}) => {
 
-              <img
-                className="profileCoverImg"
-                src="assets/post/3.jpeg"
-                alt=""
-              />
-              <img
-                className="profileUserImg"
-                src="assets/person/Beach.jpg"
-                alt=""
-              />
-            </div>
-            <div className="userprofile-Info">
-                <h4 className="userprofile-Info-Name">Ypu Can Know</h4>
-                <span className="userprofile-Info-Desc">Time To Travel!</span>
-            </div>
-    </>
-  );
-}
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [post, setPost] = useState("");
 
-export default Profile;
+  console.log(firstName)
 
+  const url="http://localhost:3002/users";
 
-// // import React from 'react'
-// import tProfilebar from '../../components/TProfilebar/tProfilebar'
-
-
-
-// function Profile() {
-//     return (
-//         <tProfilebar/>
-            
-        
-//     )
-// }
-
-// export default Profile
+  const createPost = async (e) => {
+    e.preventDefault();
+    let newPost = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      username: username,
+      password: password,
+      post: post,
+    }
+    let response = await axios.post(`${url}/Profile`,newPost)
+    console.log(response)
+    if (response.data.status === 200) {
+      // Need to store jwt in localstorage
+      localStorage.setItem("youknow", response.data.jwt);
+      history.push("/profile");
+    } else {
+      history.push("/profile");
+    }
+  }
 
 
 
+  return (
+    <form className="container" onSubmit={createPost}>
+      <h1>Welcome! Create A Post!</h1>
+      <br></br>
+      <label>First Name:</label>
+      <input onChange={(e) => setFirstName(e.target.value)} value={firstName} /><br></br>
+      <label>Last Name:</label>
+      <input onChange={(e) => setLastName(e.target.value)} value={lastName} /><br></br>
+      <br></br>
+      <label>Email:</label>
+      <input onChange={(e) => setEmail(e.target.value)} value={email} /><br></br>
+      <br></br>
+      <label>Username:</label>
+      <input onChange={(e) => setUsername(e.target.value)} value={username} /><br></br>
+      <br></br>
+      <label>Password:</label>
+      <input onChange={(e) => setPassword(e.target.value)} value={password} /><br></br>
+      <br></br>
+      <label>Post:</label>
+      <input onChange={(e) => setPost(e.target.value)} value={post} /><br></br>
+      <br></br>
+      <button type="submit">Submit Post</button>
+      <Link to="/profile">Create A Post</Link>
+    </form>
+  )  
+};
 
-// import React from 'react';
-// // import { Button } from './Button';
-// import './Header.css';
-// import '../App.css';
-// import images from 'react-router-dom';
-// import "./Navbar.css";
-
-// function Profile() {
-//     return (
-//         <div className='navbar-container'>
-//             <h1>
-//                 Profile Page!
-//             </h1>
-//         </div>
-//     )
-// }
-
-// export default Profile
-
+export default Profile;
