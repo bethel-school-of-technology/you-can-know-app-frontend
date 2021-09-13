@@ -1,4 +1,6 @@
 import "./profile.css";
+import '../../App.css';
+
 //import Tpbar from "../../components/tpbar/Tpbar";
 //import Sidebar from "../../components/sidebar/Sidebar";
 // import Feed from "../../components/feed/Feed";
