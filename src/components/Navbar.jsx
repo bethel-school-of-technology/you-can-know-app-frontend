@@ -52,7 +52,7 @@ Y.C.K. <i className="fab fa-typo3" />
     </Link>
 </li>
 <li className="nav-item">
-    <Link to="/userprofile" className="nav-links" onClick={closeMobileMenu}>
+    <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
        Profile
     </Link>
 </li>
