@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import '../../App.css';
+import './login.css';
 
 
 
@@ -25,16 +25,22 @@ const Login = ({history}) => {
         }
       }
     return (
-        <div>
-            <form className="container" onSubmit={ loginUser }>
-                <h1>Please Login</h1>
-                <label>Username</label>
-                <input type="text" name="username" onChange={ e => setUsername(e.target.value)}></input> <br></br>
-                <label>Password</label> 
-                <input type="text" name="password" onChange={ e => setPassword(e.target.value)}></input> <br></br>
-                <button >Login</button>
-            </form>
-        </div>
+        <form className="container-login">
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+            <div className="container-log" onSubmit={ loginUser }>
+                <h1 className="log">Please Login</h1>
+                <label className="log">Username</label>
+                <input className="logFill" type="text" name="username" onChange={ e => setUsername(e.target.value)}></input> <br></br>
+                <label className="log">Password</label> 
+                <input className="logFill" type="text" name="password" onChange={ e => setPassword(e.target.value)}></input> <br></br>
+                <button className="log3">Login</button>
+            </div>
+        </form>
     );
 }
 export default Login

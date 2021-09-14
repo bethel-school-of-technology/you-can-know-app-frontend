@@ -12,7 +12,6 @@ function Footer() {
            this App by Subscribing!
             </p>
             <p className='footer-subscription=text'>
-                Unsubscribe
             </p>
             <div className='input-areas'>
             <form>

@@ -1,14 +1,14 @@
 .navbar {
-  background: linear-gradient(90deg, (goldenrod) 50%, (brown) 100%);
-  background-color: black;
+  /* background: linear-gradient(90deg, (goldenrod) 50%, (brown) 100%); */
+  background-color: white;
   height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  position:relative;
   top: 0;
   z-index: 999;
+  padding: 30px;
 }
 
 .navbar-container {
@@ -16,18 +16,13 @@
   justify-content: center;
   align-items: center;
   height: 90px;
-  max-width: 1500px;
+  max-width: auto;
 }
 
 .navbar-logo {
-  background-image: url('/src/images/YCKBlue.png');
-  color: crimson;
+  background-image: url('/src/images/LOGO.png');
   justify-self: start;
-  margin-left: 20px;
   cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-  font-style: bolder, italic;
   display: flex;
   align-items: center;
 }
@@ -38,22 +33,22 @@
 }
 
 .nav-menu {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 10px;
+  display: flex;
   list-style: none;
   text-align: center;
-  width: 60vw;
-  justify-content: end;
-  margin-right: 2rem;
+  width: auto;
+  justify-content: start;
+  margin-left: 1rem;
 }
 
 .nav-item {
-  height: 80px;
+  display: flex;
+  height: 60px;
+  
 }
 
 .nav-links {
-  color: white;
+  color: royalblue;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -62,8 +57,10 @@
 }
 
 .nav-links:hover {
+  display: flex;
   border-bottom: 4px solid goldenrod;
-  transition: all 0.2s ease-out;
+  color: crimson;
+  
 }
 
 .fa-bars {
@@ -101,27 +98,27 @@
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
-  }
+  } */
 
   .nav-links {
     text-align: center;
     padding: 2rem;
     width: 100%;
     display: table;
-  }
+  } */
 
   .nav-links:hover {
     background-color: crimson;
     color:royalblue;
     border-radius: 0;
-  }
+  } */
 
   .navbar-logo {
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
-  }
+  } */ */
 
   .menu-icon {
     display: block;
@@ -131,9 +128,9 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-  }
+  } */
 
-  .fa-times {
+ .fa-times {
     color:purple;
     font-size: 3rem;
   }

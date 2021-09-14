@@ -15,7 +15,7 @@ body {
   margin: 2px auto;
   overflow: auto;
   min-height: 4000px;
-  border: 0px solid royalblue;
+  /* border: 0px solid royalblue; */
   padding: 30px;
   border-radius: 5px;
 }
@@ -113,3 +113,4 @@ footer {
   text-align: center;
   background-color: crimson;
 }
+
