@@ -10,10 +10,11 @@ function Header() {
   return (
     <>
     <div className='header-container'>
-    <img src='./Balloons-j-bezanger.jpg' alt=""/>
+    <h1>ARE YOU READY?</h1>
+    
+    
 
-      <h1>WELCOME TO: "YOU CAN KNOW!"</h1>
-      <p>YOUR JOURNEY BEGINS HERE!</p>
+      
       <div className='header-btns'>
         <Button
           className='btns'

@@ -1,0 +1,57 @@
+.container-login{
+    background-image: url('/src/images/LOGIN.jpeg');
+    background-repeat: no-repeat;
+    height: 1200px;
+}
+
+.container-log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 50%;
+    height: 400px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+    justify-content: center;
+    padding: 30px;
+
+}
+
+.log {
+    font-weight: bold;
+    color: #000000;
+  }
+
+.log1 {
+    color: transparent;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 100px;
+    margin-top: -25px;
+  }
+
+  .log3 {
+    color: royalblue;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+  }
+  
+  .log3:hover {
+    display: flex;
+    border: 4px solid white;
+    color: white;
+    background-color: royalblue;
+    
+  }
+
+  .logFill{
+        background-color: white;
+        padding: 5px;
+        margin: 1px;
+        color: blue;
+        width: auto;
+      
+  }

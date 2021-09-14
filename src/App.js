@@ -15,7 +15,7 @@ const App = () => {
 //const title = 'You Can Know!'
 
   return (
-    <>
+    
    <Router>
      <Navbar />
       <Switch>
@@ -30,7 +30,7 @@ const App = () => {
         <Route path='/profile' component={Profile} />
       </Switch>
       </Router>
-      </>
+     
  );  
 }
 

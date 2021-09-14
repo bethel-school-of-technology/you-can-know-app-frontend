@@ -1,6 +1,6 @@
 .footer-container {
     /* background-image: url('/src/images/HillCityR-g-angel.jpg'); */
-    background-color: black;
+    background-color: #C2B280;
     padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
@@ -21,12 +21,7 @@
   }
   
   .footer-subscription > p {
-    font-family: Georgia, 
-    'Times New Roman', 
-    Times, 
-    serif, 
-    'Gothic medium',
-    'Filmotype Western Regular';
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
   }
   
   .footer-subscription-heading {

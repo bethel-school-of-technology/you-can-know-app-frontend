@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import './signup.css';
 
 const SignUp = ({history}) => {
 
@@ -34,26 +35,37 @@ const SignUp = ({history}) => {
   }
 
   return (
-    <form className="container" onSubmit={createUser}>
-      <h1>Welcome! Signup to Get Started!</h1>
+    <form className="container-signup" onSubmit={createUser}>
       <br></br>
-      <label>First Name:</label>
-      <input onChange={(e) => setFirstName(e.target.value)} value={firstName} /><br></br>
-      <label>Last Name:</label>
-      <input onChange={(e) => setLastName(e.target.value)} value={lastName} /><br></br>
+      <br></br>
+
+    <div className="container-sign">
+
+    <h2 className="sign2">Signup to Get Started!</h2> 
       <br></br>
-      <label>Email:</label>
-      <input onChange={(e) => setEmail(e.target.value)} value={email} /><br></br>
-      <br></br>
-      <label>Username:</label>
-      <input onChange={(e) => setUsername(e.target.value)} value={username} /><br></br>
-      <br></br>
-      <label>Password:</label>
-      <input onChange={(e) => setPassword(e.target.value)} value={password} /><br></br>
-      <br></br>
-      <button type="submit">Sign Up</button>
+      
+      <label className="sign">First Name:</label>
+      <input className="fillMe" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
+      <label className="sign">Last Name:</label>
+      <input className="fillMe" onChange={(e) => setLastName(e.target.value)} value={lastName} />
+      
+      <label className="sign">Email:</label>
+      <input className="fillMe" onChange={(e) => setEmail(e.target.value)} value={email} />
+      
+      <label className="sign">Username:</label>
+      <input className="fillMe" onChange={(e) => setUsername(e.target.value)} value={username} />
+      
+      <label className="sign">Password:</label>
+      <input className="fillMe" onChange={(e) => setPassword(e.target.value)} value={password} />
+      
+      <button className="sign3" type="submit">Sign Up</button>
       <Link to="/login">Go to Login</Link>
+
+</div>
     </form>
+
+    
+      
   )  
 };
 
