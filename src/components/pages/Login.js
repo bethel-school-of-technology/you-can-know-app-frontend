@@ -27,11 +27,7 @@ const Login = ({history}) => {
     return (
         <form className="container-login">
           <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+
             <div className="container-log" onSubmit={ loginUser }>
                 <h1 className="log">Please Login</h1>
                 <label className="log">Username</label>
