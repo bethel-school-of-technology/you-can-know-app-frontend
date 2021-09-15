@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import './signup.css';
 import validation from "../validation";
 import {Link} from "react-router-dom";
@@ -23,7 +24,7 @@ const SignUp = () => {
           });
      };
 
-     const handleFormSubmit = (e) => {
+     const createUser = (e) => {
           e.preventDefault();
           setErrors(validation(values));
      }
@@ -93,14 +94,18 @@ const SignUp = () => {
       {errors.password && <p className="error">{errors.password}</p>}
       </div>
 
-      <div>
-      <button className="sign3" type="submit" onClick={handleFormSubmit}>Sign Up</button>
-      </div>
+      
+      
 
-      <Link to="/login">Go to Login</Link>
+      <button className="sign3" type="submit" onClick={createUser}>Sign Up</button>
+      <Link to="/login">Go to Login</Link>
+</div>
+    </form>
 
-     </div>
-    </form>      
+      
+
+    
+        
   )  
 }
 
