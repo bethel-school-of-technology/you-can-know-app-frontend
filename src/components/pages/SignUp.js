@@ -1,72 +1,108 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
-import axios from "axios";
 import './signup.css';
+import validation from "../validation";
+import {Link} from "react-router-dom";
 
-const SignUp = ({history}) => {
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  console.log(firstName)
+const SignUp = () => {
 
-  const url="http://localhost:3002/users";
+     const [values, setValues] = useState({
+          firstName: "",
+          lastName:"",
+          email:"",
+          username:"",
+          password:"",
+     });     
 
-  const createUser = async (e) => {
-    e.preventDefault();
-    let newUser = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      username: username,
-      password: password,
-    }
-    let response = await axios.post(`${url}/signup`,newUser)
-    console.log(response)
-    if (response.data.status === 200) {
-      // Need to store jwt in localstorage
-      localStorage.setItem("youknow", response.data.jwt);
-      history.push("/profile");
-    } else {
-      history.push("/login");
-    }
-  }
+     const [errors, setErrors] = useState({});
+
+     const handleChange = (e) => {
+          setValues({
+               ...values,
+               [e.target.name]: e.target.value,
+          });
+     };
+
+     const handleFormSubmit = (e) => {
+          e.preventDefault();
+          setErrors(validation(values));
+     }
 
   return (
-    <form className="container-signup" onSubmit={createUser}>
-      <br></br>
-      <br></br>
+ 
+    <form className="container-signup" >
 
     <div className="container-sign">
 
-    <h2 className="sign2">Signup to Get Started!</h2> 
+      <h2 className="sign2">Signup to Get Started!</h2> 
       <br></br>
-      
+      <div>
       <label className="sign">First Name:</label>
-      <input className="fillMe" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
-      <label className="sign">Last Name:</label>
-      <input className="fillMe" onChange={(e) => setLastName(e.target.value)} value={lastName} />
-      
+      <input 
+          type="text" 
+          name="firstName" 
+          className="fillMe" 
+          value={values.firstName}
+          onChange={handleChange} />
+      {errors.firstName && <p className="error">{errors.firstName}</p>}
+      </div>
+      <div>
+      <label className="sign">Last Name:</label>
+      <input 
+          type="text" 
+          name="lastName" 
+          className="fillMe" 
+          value={values.lastName}
+          onChange={handleChange} />
+      {errors.lastName && <p className="error">{errors.lastName}</p>}
+      </div>
+     
+      <div>
       <label className="sign">Email:</label>
-      <input className="fillMe" onChange={(e) => setEmail(e.target.value)} value={email} />
-      
+      <input 
+          type="email" 
+          name="email" 
+          className="fillMe" 
+          placeholder="email@email.com" 
+          value={values.email}
+          onChange={handleChange} />
+      {errors.email && <p className="error">{errors.email}</p>}
+      </div>
+
+      <div>
       <label className="sign">Username:</label>
-      <input className="fillMe" onChange={(e) => setUsername(e.target.value)} value={username} />
-      
-      <label className="sign">Password:</label>
-      <input className="fillMe" onChange={(e) => setPassword(e.target.value)} value={password} />
-      
-      <button className="sign3" type="submit">Sign Up</button>
+      <input 
+          type="username" 
+          name="username" 
+          className="fillMe" 
+          placeholder="minimum 3 characters" 
+          value={values.username}
+          onChange={handleChange} />
+      {errors.username && <p className="error">{errors.username}</p>}
+      </div>
+      
+      <div>
+      <label className="sign">Password:</label>
+      <input 
+          type="password" 
+          name="password" 
+          className="fillMe" 
+          placeholder="minimum 6 characters"
+          value={values.password} 
+          onChange={handleChange} />
+      {errors.password && <p className="error">{errors.password}</p>}
+      </div>
+
+      <div>
+      <button className="sign3" type="submit" onClick={handleFormSubmit}>Sign Up</button>
+      </div>
+
       <Link to="/login">Go to Login</Link>
 
-</div>
-    </form>
-
-    
-      
+     </div>
+    </form>      
   )  
-};
+}
 
-export default SignUp;
+
+export default SignUp;
