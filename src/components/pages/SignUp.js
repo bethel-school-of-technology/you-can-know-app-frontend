@@ -47,7 +47,7 @@ const SignUp = ({history}) => {
                 localStorage.setItem("youknow", response.data.jwt);
                 history.push("/login");
           } else {
-                history.push("/profile");
+                history.push("/login");
           }
       }
 
