@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from "axios";
 import './signup.css';
 import validation from "../validation";
 import {Link} from "react-router-dom";
+import axios from 'axios';
 
 
-const SignUp = () => {
+const SignUp = ({history}) => {
 
      const [values, setValues] = useState({
           firstName: "",
@@ -15,6 +15,8 @@ const SignUp = () => {
           password:"",
      });     
 
+     const url="http://localhost:3002/users";
+
      const [errors, setErrors] = useState({});
 
      const handleChange = (e) => {
@@ -22,19 +24,36 @@ const SignUp = () => {
                ...values,
                [e.target.name]: e.target.value,
           });
+         // console.log(values)
+         return values
      };
 
-     const createUser = (e) => {
+     const createUser = async (e) => {
           e.preventDefault();
           setErrors(validation(values));
-     }
+          console.log(values)
 
-  return (
- 
+          let newUser = {
+              firstName: values.firstName,
+              lastName: values.lastName,
+              email: values.email,
+              username: values.username,
+              password: values.password,
+          }
+          console.log(newUser)
+          let response = await axios.post(`${url}/signup`, newUser)
+                console.log(response)
+          if(response.data.status ===200) {
+                localStorage.setItem("youknow", response.data.jwt);
+                history.push("/login");
+          } else {
+                history.push("/profile");
+          }
+      }
+
+  return ( 
     <form className="container-signup" >
-
     <div className="container-sign">
-
       <h2 className="sign2">Signup to Get Started!</h2> 
       <br></br>
       <div>
@@ -94,20 +113,15 @@ const SignUp = () => {
       {errors.password && <p className="error">{errors.password}</p>}
       </div>
 
-      
-      
-
+      <div>
       <button className="sign3" type="submit" onClick={createUser}>Sign Up</button>
-      <Link to="/login">Go to Login</Link>
-</div>
-    </form>
+      </div>
 
-      
+      <Link to="/login">Go to Login</Link>
 
-    
-        
+     </div>
+    </form>      
   )  
-}
-
+};
 
 export default SignUp;
