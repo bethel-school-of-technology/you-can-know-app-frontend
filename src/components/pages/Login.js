@@ -54,8 +54,7 @@ const Login = ({history}) => {
                 history.push("/profile");
           }
       }
-    }
-
+     }
   return ( 
     <form className="container-login" >
     <div className="container-sign">
@@ -89,7 +88,7 @@ const Login = ({history}) => {
       <button className="sign3" type="submit" onClick={Login}>Login</button>
       </div>
 
-      <Link to="/login">Go to Profile</Link>
+      <Link to="/login">Go to Login</Link>
 
      </div>
     </form>      
