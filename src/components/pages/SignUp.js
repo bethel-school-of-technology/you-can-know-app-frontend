@@ -33,6 +33,10 @@ const SignUp = ({history}) => {
           setErrors(validation(values));
           console.log(values)
 
+      if (values.firstname === "" || values.lastname === "" || values.email === "" || values.username === "" || values.password === "") {
+            console.log("hi");
+      } else {
+
           let newUser = {
               firstName: values.firstName,
               lastName: values.lastName,
@@ -50,7 +54,7 @@ const SignUp = ({history}) => {
                 history.push("/login");
           }
       }
-
+     }
   return ( 
     <form className="container-signup" >
     <div className="container-sign">

@@ -8,9 +8,9 @@ import axios from 'axios';
 const Login = ({history}) => {
 
      const [values, setValues] = useState({
-          firstName: "",
-          lastName:"",
-          email:"",
+          // firstName: "",
+          // lastName:"",
+          // email:"",
           username:"",
           password:"",
      });     
@@ -28,10 +28,14 @@ const Login = ({history}) => {
          return values
      };
 
-     const createUser = async (e) => {
+     const Login = async (e) => {
           e.preventDefault();
           setErrors(validation(values));
           console.log(values)
+
+      if (values.username === "" || values.password === "") {
+            console.log("You Did It!");
+      } else {
 
           let Login = {
         //       firstName: values.firstName,
@@ -50,6 +54,7 @@ const Login = ({history}) => {
                 history.push("/profile");
           }
       }
+    }
 
   return ( 
     <form className="container-login" >
@@ -84,7 +89,7 @@ const Login = ({history}) => {
       <button className="sign3" type="submit" onClick={Login}>Login</button>
       </div>
 
-      <Link to="/login">Go to Login</Link>
+      <Link to="/login">Go to Profile</Link>
 
      </div>
     </form>      
