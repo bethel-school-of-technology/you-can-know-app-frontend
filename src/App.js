@@ -12,6 +12,8 @@ import Navbar from './components/Navbar';
 import Greece from './components/pages/Destinations/Greece';
 import Brazil from './components/pages/Destinations/Brazil';
 import Mexico from './components/pages/Destinations/Mexico';
+import SearchBar from './components/SearchBar';
+import SearchResult from './Data.json';
 
 const App = () => {
 //const title = 'You Can Know!'
@@ -33,10 +35,11 @@ const App = () => {
         <Route path='/greece' component={Greece}/>  
         <Route path='/brazil' component={Brazil}/>      
         <Route path='/mexico' component={Mexico}/>      
-    
+        <div className='App'>
+        <SearchBar placeholder='Enter Search Text Here...' /></div>
         </Switch>
       </Router>
  );  
 }
 
-export default App;
+export default App
