@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';
 import './signup.css';
 import validation from "../validation";
 import {Link} from "react-router-dom";
@@ -30,12 +30,22 @@ const SignUp = ({history}) => {
 
      const createUser = async (e) => {
           e.preventDefault();
-          setErrors(validation(values));
-          console.log(values)
+        //   setErrors(validation(values));
+        //   setIsErrors(true);
+          console.log(values);
+          const emailVal = /\S+@\S+\.\S+/;
 
-      if (values.firstname === "" || values.lastname === "" || values.email === "" || values.username === "" || values.password === "") {
-            console.log("hi");
-      } else {
+        if (values.firstName === "" || 
+            values.lastName === "" || 
+            values.email === "" ||
+            values.email === emailVal ||
+            values.username === "" ||
+            values.username.length < 3 ||
+            values.password === "" ||
+            values.password.length < 6 ) {
+        e.preventDefault();
+        setErrors(validation(values));
+          } else {
 
           let newUser = {
               firstName: values.firstName,
@@ -53,7 +63,7 @@ const SignUp = ({history}) => {
           } else {
                 history.push("/login");
           }
-      }
+       }
      }
   return ( 
     <form className="container-signup" >
