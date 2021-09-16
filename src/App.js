@@ -9,7 +9,9 @@ import SignUp from './components/pages/SignUp';
 import Profile from './components/pages/Profile';
 import Login from './components/pages/Login';
 import Navbar from './components/Navbar';
-
+import Greece from './components/pages/Destinations/Greece';
+import Brazil from './components/pages/Destinations/Brazil';
+import Mexico from './components/pages/Destinations/Mexico';
 
 const App = () => {
 //const title = 'You Can Know!'
@@ -28,9 +30,12 @@ const App = () => {
         <Route path='/signup' component={SignUp} />
         <Route path='/login' component={Login} />
         <Route path='/profile' component={Profile} />
-      </Switch>
+        <Route path='/greece' component={Greece}/>  
+        <Route path='/brazil' component={Brazil}/>      
+        <Route path='/mexico' component={Mexico}/>      
+    
+        </Switch>
       </Router>
-     
  );  
 }
 
