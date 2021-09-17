@@ -59,7 +59,7 @@ const SignUp = ({ history }) => {
         localStorage.setItem("youknow", response.data.jwt);
         history.push("/login");
       } else {
-        history.push("/signup");
+        history.push("/login");
       }
     }
   };
