@@ -8,9 +8,7 @@ import axios from 'axios';
 const Login = ({history}) => {
 
      const [values, setValues] = useState({
-          // firstName: "",
-          // lastName:"",
-          // email:"",
+
           username:"",
           password:"",
      });     
@@ -34,13 +32,9 @@ const Login = ({history}) => {
           console.log(values)
 
       if (values.username === "" || values.password === "") {
-            console.log("You Did It!");
+            setErrors(validation(values));
       } else {
-
           let Login = {
-        //       firstName: values.firstName,
-        //       lastName: values.lastName,
-        //       email: values.email,
               username: values.username,
               password: values.password,
           }
@@ -49,9 +43,9 @@ const Login = ({history}) => {
                 console.log(response)
           if(response.data.status ===200) {
                 localStorage.setItem("youknow", response.data.jwt);
-                history.push("/login");
-          } else {
                 history.push("/profile");
+          } else {
+                history.push("/login");
           }
       }
      }
@@ -69,7 +63,7 @@ const Login = ({history}) => {
           placeholder="minimum 3 characters" 
           value={values.username}
           onChange={handleChange} />
-      {errors.username && <p className="error">{errors.username}</p>}
+      {errors.username && <p style={{ color: "red" }} className="error">{errors.username}</p>}
       </div>
       
       <div>
@@ -81,7 +75,7 @@ const Login = ({history}) => {
           placeholder="minimum 6 characters"
           value={values.password} 
           onChange={handleChange} />
-      {errors.password && <p className="error">{errors.password}</p>}
+      {errors.password && <p style={{ color: "red" }} className="error">{errors.password}</p>}
       </div>
 
       <div>
