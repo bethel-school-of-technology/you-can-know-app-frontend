@@ -1,6 +1,6 @@
 import React from 'react';
-import './profile.css';
-import image from "../../images/img_avatar.png";
+// import './profile.css';
+// import image from "../../images/img_avatar.png";
 
 
 function Profile() {
@@ -10,7 +10,7 @@ function Profile() {
         <div className="pic-1">
           <h1>John Doe</h1>
           <div classname="john">
-          <img src={image} height="auto" width="100" alt="Avatar"/>
+          {/* <img src={image} height="auto" width="100" alt="Avatar"/> */}
           </div>
           <h3 className="bio">About Me</h3>
         </div>

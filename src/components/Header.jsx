@@ -1,21 +1,21 @@
 import React from 'react';
 import { Button } from './Button';
-import './Header.css';
+// import './Header.css';
 import '../App.css';
 
-// import images from 'react-router-dom';
+import images from 'react-router-dom';
 
 
 function Header() {
   return (
-    <>
-    <div className='header-container'>
-    <h1>ARE YOU READY?</h1>
+    
+    <div className="min-h-screen flex items-center justify-center bg-home-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
+    <h1>Welcome!</h1>
     
     
 
       
-      <div className='header-btns'>
+      {/* <div className='header-btns'>
         <Button
           className='btns'
           buttonStyle='btn--outline'
@@ -30,9 +30,9 @@ function Header() {
         >
           DIVE RIGHT IN! <i className='far fa-play-circle' />
         </Button>
-      </div>
+      </div> */}
     </div>
-    </>
+    
   );
 }
 
