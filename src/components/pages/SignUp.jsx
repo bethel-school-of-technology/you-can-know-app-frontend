@@ -13,7 +13,7 @@ const SignUp = ({ history }) => {
     password: "",
   });
 
-  const url = "http://localhost:3002/users";
+  const url = "http://localhost:3002/users/";
 
   const [errors, setErrors] = useState({});
 
@@ -55,11 +55,12 @@ const SignUp = ({ history }) => {
       console.log(newUser);
       let response = await axios.post(`${url}/signup`, newUser);
       console.log(response);
-      if (response.data.status === 200) {
-        localStorage.setItem("youknow", response.data.jwt);
+      if (response.status === 200) {
+        console.log("hi")
+        localStorage.setItem("ykToken", response.data.jwt);
         history.push("/login");
       } else {
-        history.push("/login");
+        history.push("/signup");
       }
     }
   };
