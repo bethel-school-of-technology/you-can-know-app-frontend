@@ -15,7 +15,7 @@ function About() {
             <div className="bg-white pb-6 pt-4 rounded-lg">
             <h2 className="text-3xl text-center font-extrabold text-red-700">You Can Know the Creators</h2>
             <p className="text-lg leading-relaxed m-4 text-blueGray-500 text-center">
-                  These three classmates have two things in common: Full Stack Web Development and a love for
+                  These three people have two things in common: Full Stack Web Development and a love for
                   travel. Together, they did exactly that...they joined these two passions together and
                   created the perfect app for traveling secrets. It's a must-have for those of you that love to 
                   see the world! 

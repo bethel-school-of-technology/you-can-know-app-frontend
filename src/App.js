@@ -13,6 +13,7 @@ import Navbarr from './components/Navbarr';
 import Greece from './components/pages/Destinations/Greece';
 import Brazil from './components/pages/Destinations/Brazil';
 import Mexico from './components/pages/Destinations/Mexico';
+import Posts from './components/pages/Posts';
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
         <Route path='/greece' component={Greece}/>  
         <Route path='/brazil' component={Brazil}/>      
         <Route path='/mexico' component={Mexico}/>      
+        <Route path='/posts' component={Posts}/>      
         
         </div>
         
