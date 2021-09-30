@@ -1,120 +1,110 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';
 import validation from "../validation";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import image from "../../images/LOGO.png";
 import { LockClosedIcon } from '@heroicons/react/solid'
 
 
-const Login = ({history}) => {
+const Login = ({ history }) => {
 
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");  
+  const [password, setPassword] = useState("");
 
 
-     const url="http://localhost:3002/users";
+  const url = "http://localhost:3002/users";
 
-     const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
-    //      const handleChange = (e) => {
-      //      setUserName({[e.target.name]:e.target.value})
-      //      setPassword({[e.target.name]: e.target.value})
-      //     setValues({
-      //          ...values,
-      //          [e.target.name]: e.target.value,
-      //     });
-      //    console.log(values)
-      //    return values
-//      };
 
-const values = {
-  username: username,
-  password: password
-}
-//console.log(values);
+  const values = {
+    username: username,
+    password: password
+  }
+  //console.log(values);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setErrors(validation(values));
-//     console.log("hi")
-//      console.log(values)
-//      console.log("hello")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors(validation(values));
+    //     console.log("hi")
+    //      console.log(values)
+    //      console.log("hello")
 
-if (username === "" || password === "") {
-  setErrors(validation(values));
-} else {
-//     let login = {
-//         username: username,
-//         password: password,
-//     }
-// console.log("?????????"+ values);
- console.log(values)
-let response = await axios.post(`${url}/login`, values)
-        
-      console.log(response);
-if(response.data.status === 200) {
+    if (username === "" || password === "") {
+      setErrors(validation(values));
+    } else {
+      //     let login = {
+      //         username: username,
+      //         password: password,
+      //     }
+      // console.log("?????????"+ values);
+      console.log(values)
+      let response = await axios.post(`${url}/login`, values)
 
-      localStorage.setItem("ykToken", response.data.jwt);
-      history.push("/profile");
-} else {
-      history.push("/login");
-}
-}
-}
-  return ( 
-      
-      <div className="min-h-screen flex items-center justify-center bg-login-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
+      console.log(response);
+      if (response.data.status === 200) {
+
+        localStorage.setItem("ykToken", response.data.jwt);
+        history.push("/profile");
+      } else {
+        history.push("/login");
+      }
+    }
+  }
+  return (
+
+    <div className="min-h-screen flex items-center justify-center bg-login-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto px-4 mb-15 h-auto object-center ">
-      <div className="max-w-md w-full space-y-8 bg-white bg-opacity-90 px-10 pb-6 pt-4 rounded-lg border-4 border-white">
-        <div>
-        <Link to="/home">
-        <img
-            className="mx-auto h-12 w-auto transform scale-250"
-            src={image}
-            alt="logo"
-          />
-          </Link>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-red-700">Please Login to Get Started!</h2>
-          
-        </div>
-        <form className="mt-8 space-y-6" 
-              action="#" 
-              method="POST"
-              onSubmit={handleSubmit}>
-          <input type="hidden" name="remember" defaultValue="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="username" className="sr-only">
-                Username
-              </label>
-              <input
-                name="username"
-                type="username"                
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Username minimum 3 characters"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+        <div className="max-w-md w-full space-y-8 bg-white bg-opacity-90 px-10 pb-6 pt-4 rounded-lg border-4 border-white">
+          <div>
+            <Link to="/home">
+              <img
+                className="mx-auto h-12 w-auto transform scale-250"
+                src={image}
+                alt="logo"
               />
-              {errors.Username && <p style={{ color: "red" }}>{errors.Username}</p>}
-            </div>
+            </Link>
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-red-700">Please Login to Get Started!</h2>
 
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input                
-                name="password"
-                type="password"                
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-            </div>
           </div>
+          <form className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}>
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="rounded-md shadow-sm -space-y-px">
+              <div>
+                <label htmlFor="username" className="sr-only">
+                  Username
+                </label>
+                <input
+                  name="username"
+                  type="username"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Username minimum 3 characters"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                {errors.Username && <p style={{ color: "red" }}>{errors.Username}</p>}
+              </div>
 
-          
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  name="password"
+                  type="password"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
+              </div>
+            </div>
+
+
             <button
               type="submit"
               onClick={Login}
@@ -129,17 +119,17 @@ if(response.data.status === 200) {
             <br></br>
 
             <p className="mt-2 text-center text-sm text-gray-600">
-            <a href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
-             ––––Not a member? Sign Up––––
-            </a>
-          </p>
+              <a href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+                ––––Not a member? Sign Up––––
+              </a>
+            </p>
 
-          
-        </form>
+
+          </form>
+        </div>
       </div>
     </div>
-    </div>
-  )  
+  )
 };
 
 export default Login;

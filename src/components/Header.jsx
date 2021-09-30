@@ -10,7 +10,7 @@ function Header() {
   return (
     
     <div className="min-h-screen flex items-center justify-center bg-home-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
-    <h1 className="text-4xl text-white text font-extrabold ">
+    <h1 className="text-6xl text-white text font-extrabold  ">
     “Traveling – it leaves you speechless, then turns you into a storyteller” – Ibn Battuta
     </h1>
     
