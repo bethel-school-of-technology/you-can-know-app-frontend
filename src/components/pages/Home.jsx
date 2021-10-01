@@ -13,7 +13,7 @@ const Home = (props) => {
         <Cards />
         <Footer />
 
-        <div>
+        <div className="text-center mt-1 mb-1 text-gray-300">
             Y.C.K,Tsalach(c) 2021
         </div>
 

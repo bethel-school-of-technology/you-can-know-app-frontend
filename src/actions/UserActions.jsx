@@ -12,7 +12,12 @@ import {
 	USER_UPDATE_SUCCESS,
 	USER_LOGOUT,
 	} from "../constants/userConstants";
+
 	import axios from "axios";
+	
+		// export const isLoggedIn = () => {
+	// 	return  !!localStorage.getItem(userInfo);
+	// };
 	
 	export const login = (email, password) => async (dispatch) => {
 	try {

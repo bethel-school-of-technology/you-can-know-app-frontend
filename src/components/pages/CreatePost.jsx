@@ -9,7 +9,7 @@ import { LockClosedIcon } from '@heroicons/react/solid'
 
 // import images from '../../images/LOGIN.jpeg';
 // import { Form, Button, Row, Col } from "react-bootstrap";
-// import { useDispatch, useSelector } from "react-redux";
+
 // import { updatePosts } from "../../actions/UserActions";
 import Loading from "../../components/Loading";
 // import ErrorMessage from "../../components/ErrorMessage";
