@@ -18,7 +18,7 @@ const Profile = ({ history }) => {
   const [username, setUsername] = useState("");
   const [picMessage, setpicMessage] = useState("");
 
-  const [userInfo, setUserInfo] = useState();
+  // const [userInfo, setUserInfo] = useState();
   const [userPosts, setUserPosts] = useState([]); // change null to array, becasue you're adding multiple posts
   const [errors, setErrors] = useState({});
 
@@ -28,7 +28,7 @@ const Profile = ({ history }) => {
   const [postBody, setPostBody] = useState("");
 
   const baseUrl = "http://localhost:3002/users";
-
+  
   useEffect(() => {
     let ykHeader = {
       authorization: "Bearer " + localStorage.getItem("ykToken"),
@@ -43,8 +43,8 @@ const Profile = ({ history }) => {
         // setCountry(currentUser.data.user.Country);
         // setPostTitle(currentUser.data.user.PostTitle);
         // setPostBody(currentUser.data.user.PostBody);
-        setPic(currentUser.data.user.Pic);
-        setpicMessage(currentUser.data.user.picMessage);
+        // setPic(currentUser.data.user.Pic);
+        // setpicMessage(currentUser.data.user.picMessage);
         
         history.push("/Profile")
       }).catch((e) => console.error(e));
@@ -56,17 +56,16 @@ const Profile = ({ history }) => {
 
   }, []);
   
-
-  function handleSubmit() {
-    // event.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
 
     axios
       .post(
         `http://localhost:3002/posts/create`,
         {
-          country: Country,
-          postTitle: postTitle,
-          postBody: postBody,
+          Country: Country,
+          PostTitle: postTitle,
+          PostBody: postBody,
         },
         {
           headers: {
@@ -87,6 +86,7 @@ const Profile = ({ history }) => {
         console.log("Something went wrong");
       });
   }
+  
 
   return (
     <>
@@ -98,19 +98,15 @@ const Profile = ({ history }) => {
           src={image9}
           alt=""
         />
-     {/* <p>{picMessage}</p> */}
-     {/* <p>{username}</p>  */}
-     
       </div>
-      
+
       <div className="bg-white bg-opacity-90 mx-auto max-w-5xl mt-20 px-4">
         <div className="pt-20">
-          <h1 className="text-4xl">{{firstName}+ " " +{lastName}}</h1>
+          <h1 className="text-4xl">{firstName}   {lastName}</h1>
           {/* <h1 className="text-xl text-red-700">Web Developer</h1>
           <h1 className="text-xl text-red-700">São Paulo, Brazil</h1> */}
         </div>
-    
-
+        
         <div className="mx-auto max-w-xl h-auto bg-blue-600 bg-opacity-70 mt-2 py-3 px-4 text-white rounded-2xl mb-4 ">
           <p>
             I am engaged to the most wonderful woman on the planet!!! We both
@@ -126,6 +122,8 @@ const Profile = ({ history }) => {
           <h2 className=" text-center text-3xl font-extrabold  py-2 px-2 text-white">
                 Post About Your Favorite Travel Spots!
               </h2>
+
+              
           <form
               className="mt-8 space-y-6"
               action="#"
@@ -135,9 +133,17 @@ const Profile = ({ history }) => {
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
               <div>
+              
                   <label htmlFor="Country" className="sr-only">
                     Post Country
                   </label>
+                  <label for="Country">Select The Country:</label>
+
+                <select name="Country" id="Country">
+                  <option value="volvo">Brazil</option>
+                  <option value="saab">Greece</option>
+                  <option value="mercedes">Mexico</option>
+                </select>
                   <input
                     name="Country"
                     type="Country"
@@ -145,6 +151,7 @@ const Profile = ({ history }) => {
                     placeholder="Country"
                     value={Country}
                     onChange={(e) => setCountry(e.target.value)}
+                    
                   />
                   {errors.Country && (
                     <p style={{ color: "red" }}>{errors.Country}</p>
@@ -169,7 +176,7 @@ const Profile = ({ history }) => {
                 <label htmlFor="postBody" className="sr-only">
                   Post Body
                 </label>
-                <input
+                <textarea
                   name="postBody"
                   type="postBody"
                   className=" rounded rounded-t-none h-52  block w-full px-3 py-2 pb-44 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-left align-text-top"
@@ -209,7 +216,9 @@ const Profile = ({ history }) => {
           {userPosts
         ? userPosts.map((post) => (
             <div className="bg-white rounded my-4 py-4">
-              <span className="px-3 py-3">{{firstName} + " " + {lastName} + " posted:" }</span>
+              <span className="px-3 py-3">{firstName}  {lastName}   posted: {post.PostTitle} </span>
+
+              {/* <span className="px-3 py-3">{{firstName} + " " + {lastName} + " posted:" }</span> */}
               <span className="sr-only">Post ID: {post.PostId}</span>
               <span className="sr-only px-3 py-2">{post.PostTitle}</span>
               <span className="sr-only px-3 py-2">{post.Country}</span>

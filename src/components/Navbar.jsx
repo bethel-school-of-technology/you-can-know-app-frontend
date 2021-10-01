@@ -121,6 +121,20 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
+                            to="/posts"
+                            className={classNames(
+                              active ? "bg-white" : "",
+                              "block px-4 py-2 font-semibold text-sm text-blue-600 hover:bg-blue-600 hover:text-white"
+                            )}
+                          >
+                            All Posts
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
                             to="/logout"
                             className={classNames(
                               active ? "bg-white" : "",

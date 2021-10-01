@@ -1,174 +1,174 @@
-import {	
-	POSTS_CREATE_FAIL,
-	POSTS_CREATE_REQUEST,
-	POSTS_CREATE_SUCCESS,
+// import {	
+// 	POSTS_CREATE_FAIL,
+// 	POSTS_CREATE_REQUEST,
+// 	POSTS_CREATE_SUCCESS,
 
-	POSTS_UPDATE_FAIL,
-	POSTS_UPDATE_REQUEST,
-	POSTS_UPDATE_SUCCESS,
+// 	POSTS_UPDATE_FAIL,
+// 	POSTS_UPDATE_REQUEST,
+// 	POSTS_UPDATE_SUCCESS,
 
-	POSTS_LIST_FAIL,
-	POSTS_LIST_REQUEST,
-	POSTS_LIST_SUCCESS,
+// 	POSTS_LIST_FAIL,
+// 	POSTS_LIST_REQUEST,
+// 	POSTS_LIST_SUCCESS,
 
-	POSTS_DELETE_FAIL,
-	POSTS_DELETE_REQUEST,
-	POSTS_DELETE_SUCCESS,
-	} from "../constants/postsConstants";
-	import axios from "axios";
+// 	POSTS_DELETE_FAIL,
+// 	POSTS_DELETE_REQUEST,
+// 	POSTS_DELETE_SUCCESS,
+// 	} from "../constants/postsConstants";
+// 	import axios from "axios";
 	
-	export const listPosts = () => async (dispatch, getState) => {
-	try {
-	dispatch({
-	type: POSTS_LIST_REQUEST,
-	});
+// 	export const listPosts = () => async (dispatch, getState) => {
+// 	try {
+// 	dispatch({
+// 	type: POSTS_LIST_REQUEST,
+// 	});
 	
-	const {
-	userLogin: { userInfo },
-	} = getState();
+// 	const {
+// 	userLogin: { userInfo },
+// 	} = getState();
 	
-	const config = {
-	headers: {
-	Authorization: `Bearer ${userInfo.token}`,
-	},
-	};
+// 	const config = {
+// 	headers: {
+// 	Authorization: `Bearer ${userInfo.token}`,
+// 	},
+// 	};
 	
-	const { data } = await axios.get(`/api/posts`, config);
+// 	const { data } = await axios.get(`/api/posts`, config);
 	
-	dispatch({
-	type: POSTS_LIST_SUCCESS,
-	payload: data,
-	});
-	} catch (error) {
-	const message =
-	error.response && error.response.data.message
-	? error.response.data.message
-	: error.message;
-	dispatch({
-	type: POSTS_LIST_FAIL,
-	payload: message,
-	});
-	}
-	};
+// 	dispatch({
+// 	type: POSTS_LIST_SUCCESS,
+// 	payload: data,
+// 	});
+// 	} catch (error) {
+// 	const message =
+// 	error.response && error.response.data.message
+// 	? error.response.data.message
+// 	: error.message;
+// 	dispatch({
+// 	type: POSTS_LIST_FAIL,
+// 	payload: message,
+// 	});
+// 	}
+// 	};
 	
-	export const createPostAction = (title, content, category) => async (
-	dispatch,
-	getState
-	) => {
-	try {
-	dispatch({
-	type: POSTS_CREATE_REQUEST,
-	});
+// 	export const createPostAction = (title, content, category) => async (
+// 	dispatch,
+// 	getState
+// 	) => {
+// 	try {
+// 	dispatch({
+// 	type: POSTS_CREATE_REQUEST,
+// 	});
 	
-	const {
-	userLogin: { userInfo },
-	} = getState();
+// 	const {
+// 	userLogin: { userInfo },
+// 	} = getState();
 	
-	const config = {
-	headers: {
-	"Content-Type": "application/json",
-	Authorization: `Bearer ${userInfo.token}`,
-	},
-	};
+// 	const config = {
+// 	headers: {
+// 	"Content-Type": "application/json",
+// 	Authorization: `Bearer ${userInfo.token}`,
+// 	},
+// 	};
 	
-	const { data } = await axios.post(
-	`/api/posts/`,
-	{ title, content, category },
-	config
-	);
+// 	const { data } = await axios.post(
+// 	`/api/posts/`,
+// 	{ title, content, category },
+// 	config
+// 	);
 	
-	dispatch({
-	type: POSTS_CREATE_SUCCESS,
-	payload: data,
-	});
-	} catch (error) {
-	const message =
-	error.response && error.response.data.message
-	? error.response.data.message
-	: error.message;
-	dispatch({
-	type: POSTS_CREATE_FAIL,
-	payload: message,
-	});
-	}
-	};
+// 	dispatch({
+// 	type: POSTS_CREATE_SUCCESS,
+// 	payload: data,
+// 	});
+// 	} catch (error) {
+// 	const message =
+// 	error.response && error.response.data.message
+// 	? error.response.data.message
+// 	: error.message;
+// 	dispatch({
+// 	type: POSTS_CREATE_FAIL,
+// 	payload: message,
+// 	});
+// 	}
+// 	};
 	
-	export const deletePostAction = (id) => async (dispatch, getState) => {
-	try {
-	dispatch({
-	type: POSTS_DELETE_REQUEST,
-	});
+// 	export const deletePostAction = (id) => async (dispatch, getState) => {
+// 	try {
+// 	dispatch({
+// 	type: POSTS_DELETE_REQUEST,
+// 	});
 	
-	const {
-	userLogin: { userInfo },
-	} = getState();
+// 	const {
+// 	userLogin: { userInfo },
+// 	} = getState();
 	
-	const config = {
-	headers: {
-	Authorization: `Bearer ${userInfo.token}`,
-	},
-	};
+// 	const config = {
+// 	headers: {
+// 	Authorization: `Bearer ${userInfo.token}`,
+// 	},
+// 	};
 	
-	const { data } = await axios.delete(`/api/posts/${id}`, config);
+// 	const { data } = await axios.delete(`/api/posts/${id}`, config);
 	
-	dispatch({
-	type: POSTS_DELETE_SUCCESS,
-	payload: data,
-	});
-	} catch (error) {
-	const message =
-	error.response && error.response.data.message
-	? error.response.data.message
-	: error.message;
-	dispatch({
-	type: POSTS_DELETE_FAIL,
-	payload: message,
-	});
-	}
-	};
+// 	dispatch({
+// 	type: POSTS_DELETE_SUCCESS,
+// 	payload: data,
+// 	});
+// 	} catch (error) {
+// 	const message =
+// 	error.response && error.response.data.message
+// 	? error.response.data.message
+// 	: error.message;
+// 	dispatch({
+// 	type: POSTS_DELETE_FAIL,
+// 	payload: message,
+// 	});
+// 	}
+// 	};
 	
-	export const updatePostAction = (
-        id, 
-        title, 
-        content, 
-        category) => async (
-	    dispatch,
-	    getState
-	) => {
-	try {
-	dispatch({
-	type: POSTS_UPDATE_REQUEST,
-	});
+// 	export const updatePostAction = (
+//         id, 
+//         title, 
+//         content, 
+//         category) => async (
+// 	    dispatch,
+// 	    getState
+// 	) => {
+// 	try {
+// 	dispatch({
+// 	type: POSTS_UPDATE_REQUEST,
+// 	});
 	
-	const {
-	userLogin: { userInfo },
-	} = getState();
+// 	const {
+// 	userLogin: { userInfo },
+// 	} = getState();
 	
-	const config = {
-	headers: {
-	"Content-Type": "application/json",
-	Authorization: `Bearer ${userInfo.token}`,
-	},
-	};
+// 	const config = {
+// 	headers: {
+// 	"Content-Type": "application/json",
+// 	Authorization: `Bearer ${userInfo.token}`,
+// 	},
+// 	};
 	
-	const { data } = await axios.put(
-	`/api/posts/${id}`,
-	{ title, content, category },
-	config
-	);
+// 	const { data } = await axios.put(
+// 	`/api/posts/${id}`,
+// 	{ title, content, category },
+// 	config
+// 	);
 	
-	dispatch({
-	type: POSTS_UPDATE_SUCCESS,
-	payload: data,
-	});
-	} catch (error) {
-	const message =
-	error.response && error.response.data.message
-	? error.response.data.message
-	: error.message;
-	dispatch({
-	type: POSTS_UPDATE_FAIL,
-	payload: message,
-	});
-	}
-	};
+// 	dispatch({
+// 	type: POSTS_UPDATE_SUCCESS,
+// 	payload: data,
+// 	});
+// 	} catch (error) {
+// 	const message =
+// 	error.response && error.response.data.message
+// 	? error.response.data.message
+// 	: error.message;
+// 	dispatch({
+// 	type: POSTS_UPDATE_FAIL,
+// 	payload: message,
+// 	});
+// 	}
+// 	};

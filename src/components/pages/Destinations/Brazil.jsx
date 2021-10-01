@@ -8,10 +8,10 @@ import axios from "axios";
 
 const Brazil = ({ history }) => {
   const [pic, setPic] = useState("");
-  const [username, setUsername] = useState("");
   const [picMessage, setpicMessage] = useState("");
 
-  
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [userPosts, setUserPosts] = useState([]); // change null to array, becasue you're adding multiple posts
   const [errors, setErrors] = useState({});
 
@@ -27,6 +27,8 @@ const Brazil = ({ history }) => {
       .get(baseUrl + "/brazil", { headers: ykHeader })
       .then((currentUser) => {
         // console.log(currentUser);
+        // setFirstName(currentUser.data.FirstName);
+        // setLastName(currentUser.data.LastName);
         setUserPosts(currentUser.data.myPosts);
         setPic(currentUser.data.user.img);
         setpicMessage(currentUser.data.user.picMessage);
@@ -46,17 +48,20 @@ const Brazil = ({ history }) => {
       <br />
       <p className="text-xl text-gray-100">Picture Message: {picMessage}</p>
       <br />
-      <div className="space-y-4">
-        {userPosts
-          ? userPosts.map((post) => (
-            <>
-              {/* <p className="text-xl">{post.Username}</p> */}
-              <p className="text-xl text-gray-100">{post.Country}</p>
-              <p className="text-xl text-gray-100">{post.PostTitle}</p>
-              <p className="text-normal text-gray-100">{post.PostBody}</p>
+      <div className="mx-auto max-w-2xl   bg-blue-600 bg-opacity-70 mt-4 pt-6 py-4 px-4 text-blue-600 rounded-2xl text-left">
+          {" "}
+          <div>
+          {userPosts
+        ? userPosts.map((post) => (
+            <div className="bg-white rounded my-4 py-4">
+              <span className="px-3 py-3">{firstName}  {lastName}  posted:" </span>
 
-
-            </>
+              {/* <span className="px-3 py-3">{{firstName} + " " + {lastName} + " posted:" }</span> */}
+              <span className="sr-only px-3 py-2">{post.PostTitle}</span>
+              <span className="sr-only px-3 py-2">{post.Country}</span>
+              <br></br>
+              <span className="px-3 py-2 space-y-1">{post.PostBody}</span>
+            </div>
           ))
           : `No posts to show yet`}
       </div>
@@ -100,6 +105,7 @@ const Brazil = ({ history }) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

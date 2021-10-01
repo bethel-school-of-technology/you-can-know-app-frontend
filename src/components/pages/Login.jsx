@@ -10,10 +10,10 @@ const Login = ({ history }) => {
   
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
   const url = "http://localhost:3002/users";
 
-  const [errors, setErrors] = useState({});
 
 
   const values = {
