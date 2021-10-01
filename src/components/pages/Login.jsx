@@ -14,8 +14,6 @@ const Login = ({ history }) => {
 
   const url = "http://localhost:3002/users";
 
-
-
   const values = {
     username: username,
     password: password,
