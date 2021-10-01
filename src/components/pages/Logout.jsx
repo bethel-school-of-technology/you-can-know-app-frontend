@@ -3,13 +3,14 @@ import validation from "../validation";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import image from "../../images/LOGO.png";
+import Footer from '../Footer';
 
 
 const Logout= () => {
 
 
   return ( 
-      
+      <>
       <div className="min-h-screen flex items-center justify-center bg-logout-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto px-4 mb-15 h-auto object-center ">
       <div className="max-w-md w-full space-y-8 bg-white bg-opacity-90 px-10 pb-6 pt-4 rounded-lg border-4 border-white">
@@ -47,6 +48,11 @@ const Logout= () => {
       </div>
     </div>
     </div>
+    <Footer />
+    <div className="text-center mt-1 mb-1 text-gray-300">
+            Y.C.K,Tsalach(c) 2021
+        </div>
+</>
   )  
 };
 

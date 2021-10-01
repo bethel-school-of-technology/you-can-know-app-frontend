@@ -8,16 +8,15 @@ import SignUp from './components/pages/SignUp';
 import Profile from './components/pages/Profile';
 import Login from './components/pages/Login';
 import Logout from './components/pages/Logout';
-// import Navbar from './components/Navbar';
-import Navbarr from './components/Navbarr';
+import Navbar from './components/Navbar';
 import Greece from './components/pages/Destinations/Greece';
 import Brazil from './components/pages/Destinations/Brazil';
 import Mexico from './components/pages/Destinations/Mexico';
 import Posts from './components/pages/Posts';
-
+import Terms from './components/footerLinks/Terms';
+import Disclaimer from './components/footerLinks/Disclaimer';
 
 const App = () => {
-// const title = 'You Can Know!'
 
   return (
     
@@ -29,7 +28,7 @@ const App = () => {
         <Route path='/login' component={Login} />
         <Route path='/logout' component={Logout} />
         <div>
-          <Navbarr />
+          <Navbar />
 
         <Route path="/home" default component={Home} />
         <Route exact path="/">
@@ -42,6 +41,8 @@ const App = () => {
         <Route path='/brazil' component={Brazil}/>      
         <Route path='/mexico' component={Mexico}/>      
         <Route path='/posts' component={Posts}/>      
+        <Route path='/terms' component={Terms}/>     
+        <Route path='/disclaimer' component={Disclaimer}/> 
         
         </div>
         
