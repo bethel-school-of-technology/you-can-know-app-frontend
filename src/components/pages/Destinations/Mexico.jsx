@@ -8,12 +8,12 @@ import axios from "axios";
 
 const Mexico = ({ history }) => {
   const [pic, setPic] = useState("");
- 
-  const [picMessage, setpicMessage] = useState("");
+  // const [picMessage, setpicMessage] = useState("");
+// const [userInfo, setUserInfo] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
-  const [userPosts, setUserPosts] = useState([]); // change null to array, becasue you're adding multiple posts
+  const [userPosts, setUserPosts] = useState([]); // change null to array, because you're adding multiple posts
+  const [createdAt, setCreatedAt] = useState("");
   const [errors, setErrors] = useState({});
 
 
@@ -27,45 +27,42 @@ const Mexico = ({ history }) => {
     axios
       .get(baseUrl + "/mexico", { headers: ykHeader })
       .then((currentUser) => {
-        // console.log(currentUser);
         setUserPosts(currentUser.data.myPosts);
+        setFirstName(currentUser.data.user.FirstName);
+        setLastName(currentUser.data.user.LastName);
         setPic(currentUser.data.user.img);
-        setpicMessage(currentUser.data.user.picMessage);
-        
+
         history.push("/mexico")
       }).catch((e) => console.error(e));
   }, []);
 
   return (
 
-    <div className="min-h-screen flex items-center justify-center bg-mexico-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
-
-    <div>
-      
+    
+    
+     <div className="min-h-screen flex items-center justify-center bg-mexico-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
+      <div>
       {/* <p>Mexico Picture: {pic}</p>
       <img src={image} alt="" /> */}
       <br />
-      <p>Picture Message: {picMessage}</p>
       <br />
       <div className="mx-auto max-w-2xl   bg-blue-600 bg-opacity-70 mt-4 pt-6 py-4 px-4 text-blue-600 rounded-2xl text-left">
           {" "}
-        <div>
+          <div>
           {userPosts
-        ? userPosts.map((post) => (
+        ? userPosts.map(({ user, ...post}) => (
             <div className="bg-white rounded my-4 py-4">
-              <span className="px-3 py-3">{firstName}  {lastName}   posted: {post.PostTitle} </span>
-
-              {/* <span className="px-3 py-3">{{firstName} + " " + {lastName} + " posted:" }</span> */}
-              <span className="sr-only">Post ID: {post.PostId}</span>
-              <span className="sr-only px-3 py-2">{post.PostTitle}</span>
-              <span className="sr-only px-3 py-2">{post.Country}</span>
-              <br></br>
-              <span className="px-3 py-2 space-y-1">{post.PostBody}</span>
+              <span className="px-3 py-3"> {firstName}  {lastName}  posted: {post.PostTitle} Country: {post.Country}</span>
+              <br/>
+  
+              <br/>
+              <span className="px-3 py-3 space-y-1">{post.PostBody}</span>
+              <span className="px-3 py-3 space-y-1">{post.createdAt}</span>
             </div>
           ))
           : `No posts to show yet`}
       </div>
-      <img src="images/mexico-B.jpg" />
+      <img src="images/Mexico.jpg" />
         <div className="container mx-auto px-4 mb-15 h-auto object-center ">
           <div className="max-w-md w-full space-y-8 bg-white bg-opacity-90 px-10 pb-6 pt-4 rounded-lg border-4 border-white">
             <div>
@@ -80,13 +77,6 @@ const Mexico = ({ history }) => {
                 All Travel Posts About Mexico!
               </h2>
             </div>
-            </div>
-            {/* <form
-              className="mt-8 space-y-6"
-              action="#"
-              method="POST"
-              onSubmit={handleSubmit}
-            > */}
             <div className="mt-8 space-y-6">
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
@@ -100,12 +90,13 @@ const Mexico = ({ history }) => {
                   to="/Posts"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  ––––All Posts About Brazil!––––
+                  ––––All Posts About Mexico!––––
                 </Link>
               </p>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

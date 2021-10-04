@@ -10,7 +10,7 @@ const Posts = ({ history }) => {
   const [pic, setPic] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [picMessage, setpicMessage] = useState("");
+  // const [picMessage, setpicMessage] = useState("");
 
 
   const [userPosts, setUserPosts] = useState([]); // change null to array, becasue you're adding multiple posts
@@ -29,9 +29,9 @@ const Posts = ({ history }) => {
       .then((response) => {
         setUserPosts(response.data.myPosts);
 
-        // Not doing anything for now
-        setPic(response.data.user.img);
-        setpicMessage(response.data.user.picMessage);
+        // // Not doing anything for now
+        // setPic(response.data.user.img);
+        // setpicMessage(response.data.user.picMessage);
               
         history.push("/posts")
       }).catch((e) => console.error(e));
