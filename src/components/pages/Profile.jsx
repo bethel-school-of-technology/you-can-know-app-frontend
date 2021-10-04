@@ -7,6 +7,10 @@ import image9 from "../../images/JOE.png";
 // import { handleSubmit } from "@tailwindcss/forms";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import Footer from '../Footer';
+import PostCard from "../posts/PostCard"
+
+import { AiFillEdit } from "react-icons/ai";
+
 // import { isLoggedIn } from "../../actions/UserActions";
 
 const Profile = ({ history }) => {
@@ -15,7 +19,9 @@ const Profile = ({ history }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [pic, setPic] = useState("");
-  const [username, setUsername] = useState("");
+  const [userBio, setUserBio] = useState("");
+  const [userName, setUsername] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const [picMessage, setpicMessage] = useState("");
 
   // const [userInfo, setUserInfo] = useState();
@@ -27,6 +33,8 @@ const Profile = ({ history }) => {
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
 
+  const [isBioEditBoxVisible, setIsBioEditBoxVisible] = useState(false);
+
   const baseUrl = "http://localhost:3002/users";
 
   useEffect(() => {
@@ -36,21 +44,21 @@ const Profile = ({ history }) => {
     axios
       .get(baseUrl + "/profile", { headers: ykHeader })
       .then((currentUser) => {
-        console.log(currentUser);
+
         setUsername(currentUser.data.user.Username);
+        setUserBio(currentUser.data.user.UserBio);
         setFirstName(currentUser.data.user.FirstName);
         setLastName(currentUser.data.user.LastName);
-        // setCountry(currentUser.data.user.Country);
-        // setPostTitle(currentUser.data.user.PostTitle);
-        // setPostBody(currentUser.data.user.PostBody);
-        // setPic(currentUser.data.user.Pic);
-        // setpicMessage(currentUser.data.user.picMessage);
+
+        setIsBioEditBoxVisible(
+          !currentUser.data.user.UserBio || currentUser.data.user.UserBio === "" ? true : false
+        )
 
         history.push("/Profile")
       }).catch((e) => console.error(e));
 
     axios.get(`${baseUrl}/posts`, { headers: ykHeader }).then(({ data }) => {
-      console.log(data);
+      // console.log(data);
       setUserPosts(data.myPosts);
     }).catch((e) => console.error(e));
 
@@ -87,6 +95,33 @@ const Profile = ({ history }) => {
       });
   }
 
+  function postBio(event) {
+    event.preventDefault();
+    axios
+      .post(
+        `http://localhost:3002/users/postBio`,
+        {
+          userBio: userBio,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + localStorage.getItem("ykToken"),
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+
+        setUserBio(response.data.user.UserBio);
+        setIsBioEditBoxVisible(false);
+
+      })
+      .catch((e) => {
+        console.error(e)
+        console.log("Something went wrong");
+      });
+  }
+
 
   return (
     <>
@@ -103,17 +138,65 @@ const Profile = ({ history }) => {
         <div className="bg-white bg-opacity-90 mx-auto max-w-5xl mt-20 px-4">
           <div className="pt-20">
             <h1 className="text-4xl">{firstName}   {lastName}</h1>
+            <p>{userBio}</p>
+            <AiFillEdit onClick={() => setIsBioEditBoxVisible(state => !state)} />
             {/* <h1 className="text-xl text-red-700">Web Developer</h1>
           <h1 className="text-xl text-red-700">São Paulo, Brazil</h1> */}
           </div>
 
-          <div className="mx-auto max-w-xl h-auto bg-blue-600 bg-opacity-70 mt-2 py-3 px-4 text-white rounded-2xl mb-4 ">
+          <div className={`mx-auto max-w-xl h-auto bg-blue-600 bg-opacity-70 mt-2 py-3 px-4 text-white rounded-2xl mb-4 ${isBioEditBoxVisible ? `` : `sr-only`}`}>
+            <form
+              className="mt-8 space-y-6"
+              action=""
+              method="POST"
+              onSubmit={postBio}
+            >
+              <input type="hidden" name="remember" defaultValue="true" />
+              <div className="rounded-md shadow-sm -space-y-px" />
+              <div>
+
+                <label htmlFor="UserBio" >
+                  Create Your Bio Here!
+                </label>
+                <textarea
+                  name="UserBio"
+                  type="UserBio"
+                  className=" rounded rounded-t-none h-52  block w-full px-3 py-2 pb-44 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-left align-text-top"
+                  placeholder="Users Bio"
+                  value={userBio}
+                  onChange={(e) => setUserBio(e.target.value)}
+                />
+                {errors.UserBio && (
+                  <p style={{ color: "red" }}>{errors.UserBio}</p>
+                )}
+              </div>
+              <button
+                type="submit"
+                // onClick={(e) => postBio(e.target.value)}
+                className="group  w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Create A User Bio!
+              </button>
+
+              <br></br>
+              <p className="mt-2 text-center text-sm text-gray-600">
+                <a
+                  href="/UserBio"
+                  className="font-medium text-blue-600 hover:text-indigo-500"
+                >
+                </a>
+              </p>
+            </form>
+          </div>
+
+
+          {/* <div>
             <p>
               I am engaged to the most wonderful woman on the planet!!! We both
               serve Jesus! Coding is my passion. Love listening to music. Love to
               travel. Favorite food is definitely asian food.
             </p>
-          </div>
+          </div> */}
 
 
 
@@ -176,6 +259,7 @@ const Profile = ({ history }) => {
                     <p style={{ color: "red" }}>{errors.PostTitle}</p>
                   )}
                 </div>
+
                 <label htmlFor="postBody" className="sr-only">
                   Post Body
                 </label>
@@ -196,7 +280,6 @@ const Profile = ({ history }) => {
                 // onClick={Posts}
                 className="group  w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-
                 Create A Post
               </button>
 
@@ -218,16 +301,7 @@ const Profile = ({ history }) => {
             <div>
               {userPosts
                 ? userPosts.map((post) => (
-                  <div className="bg-white rounded my-4 py-4">
-                    <span className="px-3 py-3">{firstName}  {lastName}   posted: {post.PostTitle} </span>
-
-                    {/* <span className="px-3 py-3">{{firstName} + " " + {lastName} + " posted:" }</span> */}
-                    <span className="sr-only">Post ID: {post.PostId}</span>
-                    <span className="sr-only px-3 py-2">{post.PostTitle}</span>
-                    <span className="sr-only px-3 py-2">{post.Country}</span>
-                    <br></br>
-                    <span className="px-3 py-2 space-y-1">{post.PostBody}</span>
-                  </div>
+                  <PostCard postInfo={post} key={post.PostId} />
                 ))
                 : `No posts to show yet`}
             </div>
