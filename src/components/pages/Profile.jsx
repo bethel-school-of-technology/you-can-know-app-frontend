@@ -34,6 +34,7 @@ const Profile = ({ history }) => {
   const [postBody, setPostBody] = useState("");
 
   const [isBioEditBoxVisible, setIsBioEditBoxVisible] = useState(false);
+  const [isPostEditBoxVisible, setIsPostEditBoxVisible] = useState(false);
 
   const baseUrl = "http://localhost:3002/users";
 
@@ -49,6 +50,10 @@ const Profile = ({ history }) => {
         setUserBio(currentUser.data.user.UserBio);
         setFirstName(currentUser.data.user.FirstName);
         setLastName(currentUser.data.user.LastName);
+
+        setIsPostEditBoxVisible(
+          !currentUser.data.user.UserBio || currentUser.data.user.UserBio === "" ? true : false
+        )
 
         setIsBioEditBoxVisible(
           !currentUser.data.user.UserBio || currentUser.data.user.UserBio === "" ? true : false
@@ -84,6 +89,8 @@ const Profile = ({ history }) => {
       .then((response) => {
 
         setUserPosts(userPosts => [...userPosts, response.data.post]);
+        setIsPostEditBoxVisible(false);
+
         setCountry("");
         setPostTitle("");
         setPostBody("");
@@ -190,22 +197,15 @@ const Profile = ({ history }) => {
           </div>
 
 
-          {/* <div>
-            <p>
-              I am engaged to the most wonderful woman on the planet!!! We both
-              serve Jesus! Coding is my passion. Love listening to music. Love to
-              travel. Favorite food is definitely asian food.
-            </p>
-          </div> */}
-
-
-
           <div className="mx-auto max-w-2xl  bg-blue-600 bg-opacity-70 mt-4 pt-6 px-4 text-white rounded-2xl ">
             {" "}
             <h2 className=" text-center text-3xl font-extrabold  py-2 px-2 text-white">
               Post About Your Favorite Travel Spots!
             </h2>
+                  <div>
+                  <AiFillEdit onClick={() => setIsPostEditBoxVisible(state => !state)} />
 
+                  </div>
 
             <form
               className="mt-8 space-y-6"

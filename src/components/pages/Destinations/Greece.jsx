@@ -8,13 +8,12 @@ import axios from "axios";
 
 const Greece = ({ history }) => {
   const [pic, setPic] = useState("");
-  const [username, setUsername] = useState("");
-  const [picMessage, setpicMessage] = useState("");
+  // const [picMessage, setpicMessage] = useState("");
+// const [userInfo, setUserInfo] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-
-  
-  const [userPosts, setUserPosts] = useState([]); // change null to array, becasue you're adding multiple posts
+  const [userPosts, setUserPosts] = useState([]); // change null to array, because you're adding multiple posts
+  const [createdAt, setCreatedAt] = useState("");
   const [errors, setErrors] = useState({});
 
 
@@ -28,10 +27,8 @@ const Greece = ({ history }) => {
     axios
       .get(baseUrl + "/greece", { headers: ykHeader })
       .then((currentUser) => {
-        // console.log(currentUser);
         setUserPosts(currentUser.data.myPosts);
         setPic(currentUser.data.user.img);
-        setpicMessage(currentUser.data.user.picMessage);
         
         history.push("/greece")
       }).catch((e) => console.error(e));
@@ -39,27 +36,26 @@ const Greece = ({ history }) => {
 
   return (
 
-    <div className="min-h-screen flex items-center justify-center bg-greece-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
-    <div>
+    
+    
+     <div className="min-h-screen flex items-center justify-center bg-greece-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
+      <div>
       {/* <p>Greece Picture: {pic}</p>
       <img src={image} alt="" /> */}
       <br />
-      <p className="text-xl text-gray-100">Picture Message: {picMessage}</p>
       <br />
       <div className="mx-auto max-w-2xl   bg-blue-600 bg-opacity-70 mt-4 pt-6 py-4 px-4 text-blue-600 rounded-2xl text-left">
           {" "}
-      <div>
+          <div>
           {userPosts
-        ? userPosts.map((post) => (
+        ? userPosts.map(({ user, ...post}) => (
             <div className="bg-white rounded my-4 py-4">
-              <span className="px-3 py-3">{firstName}  {lastName}   posted: {post.PostTitle} </span>
-
-              {/* <span className="px-3 py-3">{{firstName} + " " + {lastName} + " posted:" }</span> */}
-              <span className="sr-only">Post ID: {post.PostId}</span>
-              <span className="sr-only px-3 py-2">{post.PostTitle}</span>
-              <span className="sr-only px-3 py-2">{post.Country}</span>
-              <br></br>
-              <span className="px-3 py-2 space-y-1">{post.PostBody}</span>
+              <span className="px-3 py-3"> {firstName}  {lastName}  posted: {post.PostTitle} Country: {post.Country}</span>
+              <br/>
+  
+              <br/>
+              <span className="px-3 py-3 space-y-1">{post.PostBody}</span>
+              <span className="px-3 py-3 space-y-1">{post.createdAt}</span>
             </div>
           ))
           : `No posts to show yet`}
@@ -79,12 +75,6 @@ const Greece = ({ history }) => {
                 All Travel Posts About Greece!
               </h2>
             </div>
-            {/* <form
-              className="mt-8 space-y-6"
-              action="#"
-              method="POST"
-              onSubmit={handleSubmit}
-            > */}
             <div className="mt-8 space-y-6">
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
@@ -105,8 +95,8 @@ const Greece = ({ history }) => {
           </div>
         </div>
       </div>
+      </div>
     </div>
-  </div>
   );
 };
 
