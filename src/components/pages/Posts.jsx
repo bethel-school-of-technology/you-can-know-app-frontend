@@ -44,7 +44,7 @@ const Posts = ({ history }) => {
         {/* <p>Greece Picture: {pic}</p>
       <img src={image} alt="" /> */}
         <br />
-        <p className="text-xl text-gray-100">Picture Message: {picMessage}</p>
+        {/* <p className="text-xl text-gray-100">Picture Message: {picMessage}</p> */}
         <br />
         <div>
           {userPosts
@@ -54,7 +54,7 @@ const Posts = ({ history }) => {
                 {/* <span className="sr-only">Post ID: {post.PostId}</span> */}
                 
                 <span className=" px-3 py-2"> Post Title:{post.PostTitle}</span>
-                <span className=" px-3 py-2">{post.Country}</span>
+                <span className=" px-3 py-2"> Country: {post.Country}</span>
                 <br></br>
                 <span className="px-3 py-2 space-y-1">{post.PostBody}</span>
                 <br></br>
@@ -75,7 +75,7 @@ const Posts = ({ history }) => {
                 />
               </Link>
               <h2 className="mt-6 text-center text-3xl font-extrabold text-red-700">
-                All Posts AboutCountries Featured!
+                All Posts About Countries Featured On This App!
               </h2>
             </div>
 
