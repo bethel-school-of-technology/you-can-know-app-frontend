@@ -6,11 +6,14 @@ import image from "../../images/LOGO.png";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import Footer from "../Footer";
 
+import { useLoginState } from "../../context/loginStateContext";
+
 const Login = ({ history }) => {
-  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+
+  const [, setLoginStateValue] = useLoginState();
 
   const url = "http://localhost:3002/users";
 
@@ -41,6 +44,7 @@ const Login = ({ history }) => {
       console.log(response);
       if (response.data.status === 200) {
         localStorage.setItem("ykToken", response.data.jwt);
+        setLoginStateValue(true);
         history.push("/profile");
       } else {
         history.push("/login");
@@ -137,9 +141,8 @@ const Login = ({ history }) => {
       </div>
       <Footer />
       <div className="text-center mt-1 mb-1 text-gray-300">
-            Y.C.K,Tsalach(c) 2021
-        </div>
-
+        Y.C.K,Tsalach(c) 2021
+      </div>
     </>
   );
 };

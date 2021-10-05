@@ -5,21 +5,38 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import image from "../images/LOGO.png";
 import image1 from "../images/avatar.png";
 
-const navigation = [
-  { name: "Home", href: "/", current: true, show:true },
-  { name: "Destinations", href: "/destinations", current: false,show:true },
-  { name: "About Us", href: "/about", current: false ,show:true},
-  { name: "Search", href: "/search", current: false ,show:true},
-  { name: "Login", href: "/login", current: false ,show:true},
-  { name: "Signup", href: "/signup", current: false ,show:true},
-];
+import { useLoginState } from "../context/loginStateContext";
 
+const navigation = [
+  { name: "Home", href: "/", current: true, show: true },
+  { name: "Destinations", href: "/destinations", current: false, show: true },
+  { name: "About Us", href: "/about", current: false, show: true },
+  { name: "Search", href: "/search", current: false, show: true },
+  { name: "Login", href: "/login", current: false, show: true },
+  { name: "Signup", href: "/signup", current: false, show: true },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example() {
+  const [loginStateValue] = useLoginState();
+
+  if (loginStateValue === true) {
+    navigation.forEach((navItem) => {
+      if (navItem.name === "Login" || navItem.name === "Signup") {
+        navItem.show = false;
+      }
+    });
+  } else {
+    navigation.forEach((navItem) => {
+      if (navItem.name === "Login" || navItem.name === "Signup") {
+        navItem.show = true;
+      }
+    });
+  }
+
   return (
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
@@ -60,8 +77,8 @@ export default function Example() {
                 {/* navBar buttons */}
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4 pl-4">
-                    {navigation.map((item) => (
-                      (item.show) ? 
+                    {navigation.map((item) =>
+                      item.show ? (
                         <Link
                           to={item.href}
                           key={item.name}
@@ -75,8 +92,8 @@ export default function Example() {
                         >
                           {item.name}
                         </Link>
-                      : null
-                    ))}
+                      ) : null
+                    )}
                   </div>
                 </div>
               </div>
@@ -131,7 +148,7 @@ export default function Example() {
                           </Link>
                         )}
                       </Menu.Item>
-                      
+
                       <Menu.Item>
                         {({ active }) => (
                           <Link
