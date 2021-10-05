@@ -16,40 +16,43 @@ import Posts from './components/pages/Posts';
 import Terms from './components/footerLinks/Terms';
 import Disclaimer from './components/footerLinks/Disclaimer';
 
+import {LoginStateProvider} from "./context/loginStateContext";
+
 const App = () => {
 
   return (
-    
-   <Router>
+    <LoginStateProvider>
+      <Router>
 
-      <Switch>
+        <Switch>
 
-        <Route path='/signup' component={SignUp} />
-        <Route path='/login' component={Login} />
-        <Route path='/logout' component={Logout} />
-        <div>
+          <Route path='/signup' component={SignUp} />
+          <Route path='/login' component={Login} />
+          <Route path='/logout' component={Logout} />
+          <div>
           <Navbar />
+            
+          <Route path="/home" default component={Home} />
+          <Route exact path="/">
+          <Redirect to="/home" />
+          </Route>
+          <Route path='/destinations' component={Destinations} />
+          <Route path='/about' component={About} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/greece' component={Greece}/>  
+          <Route path='/brazil' component={Brazil}/>      
+          <Route path='/mexico' component={Mexico}/>      
+          <Route path='/posts' component={Posts}/>      
+          <Route path='/terms' component={Terms}/>     
+          <Route path='/disclaimer' component={Disclaimer}/> 
+          
+          </div>
+          
 
-        <Route path="/home" default component={Home} />
-        <Route exact path="/">
-        <Redirect to="/home" />
-        </Route>
-        <Route path='/destinations' component={Destinations} />
-        <Route path='/about' component={About} />
-        <Route path='/profile' component={Profile} />
-        <Route path='/greece' component={Greece}/>  
-        <Route path='/brazil' component={Brazil}/>      
-        <Route path='/mexico' component={Mexico}/>      
-        <Route path='/posts' component={Posts}/>      
-        <Route path='/terms' component={Terms}/>     
-        <Route path='/disclaimer' component={Disclaimer}/> 
-        
-        </div>
-        
+          </Switch>
 
-        </Switch>
-
-      </Router>
+        </Router>
+      </LoginStateProvider>
  );  
 }
 
