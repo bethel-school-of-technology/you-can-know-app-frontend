@@ -7,6 +7,8 @@ const PostCard = ({ postInfo }) => {
     const [hasBeenDeleted, setHasBeenDeleted] = useState(false);
     const [postBodyEdits, setPostBodyEdits] = useState(postInfo.PostBody || "");
 
+    
+
     const onClickDeleteIcon = () => {
         let ykHeader = {
             authorization: "Bearer " + localStorage.getItem("ykToken"),
@@ -42,27 +44,27 @@ const PostCard = ({ postInfo }) => {
     return (
         <div className={`bg-white rounded my-4 py-4 ${hasBeenDeleted ? `sr-only` : ``}`}>
 
-            {/* <pre>
-                <code>
-                    {
-                        JSON.stringify(postInfo, null, 2)
-                    }
-                </code>
-            </pre> */}
+           
 
-            <span className="px-3 py-3">{postInfo.firstName}  {postInfo.lastName}   posted: {postInfo.PostTitle} </span>
+            <span className="px-3 py-3">{postInfo.PostTitle} </span>
 
             <span className="sr-only">Post ID: {postInfo.PostId}</span>
             <span className="sr-only px-3 py-2">{postInfo.PostTitle}</span>
             <span className="px-3 py-2">Country: {postInfo.Country}</span>
             <br></br>
-            <textarea className="px-3 py-2 space-y-1" value={postBodyEdits} onChange={e => setPostBodyEdits(e.target.value)} />
+
+            <textarea 
+            onClick={onClickSaveEdits}
+            className=" text-black border-0 w-11/12 h-28 text-center hover:border-blue-600" value={postBodyEdits} onChange={e => setPostBodyEdits(e.target.value)} />
 
             <div>
-                <AiFillDelete onClick={onClickDeleteIcon} />
                 
-                <button onClick={onClickSaveEdits} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Save edit
+                
+                <button onClick={onClickSaveEdits} className="bg-gray-400 bg-opacity-70 hover:bg-gray-600 text-white mr-2 w-16 px-2 py-1 rounded-full  mt-2 mb-4">
+                    edit
+                </button>
+                <button onClick={onClickDeleteIcon} className="bg-gray-400 bg-opacity-70 hover:bg-gray-600 text-white ml-3 w-16 px-2 py-1 rounded-full  mt-2 mb-4">
+                    delete
                 </button>
             </div>
         </div>

@@ -134,7 +134,7 @@ const Profile = ({ history }) => {
 
   return (
     <>
-      <div className="text-blue-800 min-h-full text-center bg-contain bg-fixed md:bg-fixed md:bg-cover bg-profile-img">
+      <div className="min-h-full text-center bg-contain bg-fixed md:bg-fixed md:bg-cover bg-profile-img">
         <div className="container  mx-auto h-52 text-black">
           <img
             className=" mt-52 bottom-0 w-40 top-20 border-8 border-white rounded-full"
@@ -145,19 +145,22 @@ const Profile = ({ history }) => {
 
         <div className="bg-white bg-opacity-90 mx-auto max-w-5xl mt-20 px-4">
           <div className="pt-20">
-            <h1 className="text-4xl">
+            <h1 className="text-4xl text-red-700 font-extrabold mb-2">
               {firstName} {lastName}
             </h1>
-            <p>{userBio}</p>
-            <AiFillEdit
+            <p className="text-blue-600 text-2xl">{userBio}</p>
+
+            {/* edit bio button */}
+            <button
               onClick={() => setIsBioEditBoxVisible((state) => !state)}
-            />
-            {/* <h1 className="text-xl text-red-700">Web Developer</h1>
-          <h1 className="text-xl text-red-700">São Paulo, Brazil</h1> */}
+              className="bg-gray-400 bg-opacity-70 hover:bg-gray-600 text-white px-2 py-1 rounded-full  mt-2 mb-4"
+            >
+              edit bio
+            </button>
           </div>
 
           <div
-            className={`mx-auto max-w-xl h-auto bg-blue-600 bg-opacity-70 mt-2 py-3 px-4 text-white rounded-2xl mb-4 ${
+            className={`mx-auto max-w-2xl h-auto bg-blue-600 bg-opacity-70 mt-2 py-3 px-4 text-white rounded-2xl mb-4 ${
               isBioEditBoxVisible ? `` : `sr-only`
             }`}
           >
@@ -170,7 +173,9 @@ const Profile = ({ history }) => {
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px" />
               <div>
-                <label htmlFor="UserBio">Create Your Bio Here!</label>
+                <h1 className="text-center text-3xl font-extrabold mb-8 py-2 px-2 text-white" htmlFor="UserBio">
+                  Write Your Bio:
+                </h1>
                 <textarea
                   name="UserBio"
                   type="UserBio"
@@ -186,9 +191,9 @@ const Profile = ({ history }) => {
               <button
                 type="submit"
                 // onClick={(e) => postBio(e.target.value)}
-                className="group  w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Create A User Bio!
+                Update Bio
               </button>
 
               <br></br>
@@ -206,16 +211,13 @@ const Profile = ({ history }) => {
             <h2 className=" text-center text-3xl font-extrabold  py-2 px-2 text-white">
               Post About Your Favorite Travel Spots!
             </h2>
-            <div>
-              <AiFillEdit
-                onClick={() => setIsPostEditBoxVisible((state) => !state)}
-              />
-            </div>
+            
             <form
               className="mt-8 space-y-6"
               action="#"
               method="POST"
               onSubmit={handleSubmit}
+              onClick={() => setIsPostEditBoxVisible((state) => !state)}
             >
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
@@ -300,11 +302,13 @@ const Profile = ({ history }) => {
             </form>
           </div>
 
-          <div className="mx-auto max-w-2xl   bg-blue-600 bg-opacity-70 mt-4 pt-6 py-4 px-4 text-blue-600 rounded-2xl text-left">
+          <div className="mx-auto max-w-2xl  bg-blue-600 bg-opacity-70 mt-4 mb-4 pt-6 py-4 px-4 text-red-600 rounded-2xl text-center">
             {" "}
             <div>
+              <h1 className="text-center text-3xl font-extrabold  py-2 px-2 text-white">My Posts:</h1>
               {userPosts
                 ? userPosts.map((post) => (
+                  
                     <PostCard postInfo={post} key={post.PostId} />
                   ))
                 : `No posts to show yet`}
