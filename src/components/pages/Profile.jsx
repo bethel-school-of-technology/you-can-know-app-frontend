@@ -74,6 +74,7 @@ const Profile = ({ history }) => {
       .catch((e) => console.error(e));
   }, []);
 
+  // Create a new post
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -92,7 +93,9 @@ const Profile = ({ history }) => {
         }
       )
       .then((response) => {
-        setUserPosts((userPosts) => [...userPosts, response.data.post]);
+        // Adds new post to React state
+        setUserPosts((userPosts) => [response.data.post, ...userPosts]);
+
         setIsPostEditBoxVisible(false);
 
         setCountry("");
@@ -173,7 +176,10 @@ const Profile = ({ history }) => {
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px" />
               <div>
-                <h1 className="text-center text-3xl font-extrabold mb-8 py-2 px-2 text-white" htmlFor="UserBio">
+                <h1
+                  className="text-center text-3xl font-extrabold mb-8 py-2 px-2 text-white"
+                  htmlFor="UserBio"
+                >
                   Write Your Bio:
                 </h1>
                 <textarea
@@ -211,7 +217,6 @@ const Profile = ({ history }) => {
             <h2 className=" text-center text-3xl font-extrabold  py-2 px-2 text-white">
               Post About Your Favorite Travel Spots!
             </h2>
-            
             <form
               className="mt-8 space-y-6"
               action="#"
@@ -305,10 +310,11 @@ const Profile = ({ history }) => {
           <div className="mx-auto max-w-2xl  bg-blue-600 bg-opacity-70 mt-4 mb-4 pt-6 py-4 px-4 text-red-600 rounded-2xl text-center">
             {" "}
             <div>
-              <h1 className="text-center text-3xl font-extrabold  py-2 px-2 text-white">My Posts:</h1>
+              <h1 className="text-center text-3xl font-extrabold  py-2 px-2 text-white">
+                My Posts:
+              </h1>
               {userPosts
                 ? userPosts.map((post) => (
-                  
                     <PostCard postInfo={post} key={post.PostId} />
                   ))
                 : `No posts to show yet`}
