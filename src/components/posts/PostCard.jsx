@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-
 import { format } from "date-fns";
-
 import axios from "axios";
 
 const PostCard = ({ postInfo }) => {
@@ -54,7 +51,7 @@ const PostCard = ({ postInfo }) => {
 
   return (
     <div
-      className={`bg-white rounded my-4 py-4 ${
+      className={`bg-white rounded my-4 py-4 px-4 ${
         hasBeenDeleted ? `sr-only` : ``
       }`}
     >
@@ -62,14 +59,18 @@ const PostCard = ({ postInfo }) => {
         <code>{JSON.stringify(postInfo, null, 2)}</code>
       </pre> */}
 
-      <span>{format(new Date(postInfo.createdAt), `MMMM dd, yyyy`)}</span>
-
-      <span className="px-3 py-3">{postInfo.PostTitle} </span>
-
+      <span className="px-2 font-semibold text-red-700 text-xl">
+        {format(new Date(postInfo.createdAt), `MMMM dd, yyyy`)}
+      </span>
       <span className="sr-only">Post ID: {postInfo.PostId}</span>
-      <span className="sr-only px-3 py-2">{postInfo.PostTitle}</span>
-      <span className="px-3 py-2">Country: {postInfo.Country}</span>
-      <br></br>
+      <span className="sr-only py-2">{postInfo.PostTitle}</span>
+      <span className="px-2 py-2 text-2xl text-blue-600 font-semibold">
+        {" "}
+        {postInfo.Country}
+      </span>
+      <span className="px-2 py-3 font-semibold text-xl text-red-700">
+        {postInfo.PostTitle}{" "}
+      </span>
 
       {isEditingPostContent ? (
         <textarea
@@ -82,7 +83,7 @@ const PostCard = ({ postInfo }) => {
         <div>{postBodyEdits}</div>
       )}
 
-      <div>
+      <div className="mt-3">
         <button
           className="bg-gray-400 bg-opacity-70 hover:bg-gray-600 text-white mr-2 w-16 px-2 py-1 rounded-full  mt-2 mb-4"
           onClick={() => setIsEditingPostContent(true)}
@@ -97,9 +98,9 @@ const PostCard = ({ postInfo }) => {
         </button>
         <button
           onClick={onClickDeleteIcon}
-          className="bg-gray-400 bg-opacity-70 hover:bg-gray-600 text-white ml-3 w-16 px-2 py-1 rounded-full  mt-2 mb-4"
+          className="bg-gray-400 bg-opacity-70 hover:bg-gray-600 text-white w-16 px-2 py-1 rounded-full  mt-2 mb-4"
         >
-          delete
+          Delete
         </button>
       </div>
     </div>

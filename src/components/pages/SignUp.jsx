@@ -199,7 +199,7 @@ const SignUp = ({ history }) => {
                     href="/login"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                    ––––––Already a Member? Login––––––
+                    Already a Member? Login
                   </a>
                 </div>
               </div>
