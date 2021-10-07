@@ -169,7 +169,7 @@ export default function Example() {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-2 pt-2 pb-3 space-y-1 ">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -178,7 +178,7 @@ export default function Example() {
                     item.current
                       ? "bg-white text-blue-600 font-semibold hover:bg-blue-600 hover:text-white"
                       : "font-semibold text-blue-600 hover:bg-blue-600 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
+                    "block px-3 py-2 rounded-md text-base font-medium mt-20"
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >

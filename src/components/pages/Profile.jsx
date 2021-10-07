@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
-// import validation from "../validation";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import image from "../../images/LOGO.png";
 import image9 from "../../images/JOE.png";
-// import { handleSubmit } from "@tailwindcss/forms";
-import { LockClosedIcon } from "@heroicons/react/solid";
 import Footer from "../Footer";
 import PostCard from "../posts/PostCard";
 
-import { AiFillEdit } from "react-icons/ai";
-
-// import { isLoggedIn } from "../../actions/UserActions";
-
 const Profile = ({ history }) => {
-  // console.log(isLoggedIn)
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [pic, setPic] = useState("");
@@ -307,7 +299,7 @@ const Profile = ({ history }) => {
             </form>
           </div>
 
-          <div className="mx-auto max-w-2xl  bg-blue-600 bg-opacity-70 mt-4 mb-4 pt-6 py-4 px-4 text-red-600 rounded-2xl text-center">
+          <div className="mx-auto max-w-2xl  bg-blue-600 bg-opacity-70 mt-4 mb-4 pt-6 py-4 px-4 rounded-2xl">
             {" "}
             <div>
               <h1 className="text-center text-3xl font-extrabold  py-2 px-2 text-white">

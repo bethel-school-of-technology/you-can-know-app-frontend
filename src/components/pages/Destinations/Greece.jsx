@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 // import validation from "../validation";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { format } from "date-fns";
+
 // import image from "../../images/LOGO.png";
 // import { handleSubmit } from "@tailwindcss/forms";
-
 
 const Greece = ({ history }) => {
   const [pic, setPic] = useState("");
   // const [picMessage, setpicMessage] = useState("");
-// const [userInfo, setUserInfo] = useState("");
+  // const [userInfo, setUserInfo] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userPosts, setUserPosts] = useState([]); // change null to array, because you're adding multiple posts
   const [createdAt, setCreatedAt] = useState("");
   const [errors, setErrors] = useState({});
-
 
   const baseUrl = "http://localhost:3002/users";
   console.log(userPosts);
@@ -29,72 +29,46 @@ const Greece = ({ history }) => {
       .then((currentUser) => {
         setUserPosts(currentUser.data.myPosts);
         setPic(currentUser.data.user.img);
-        
-        history.push("/greece")
-      }).catch((e) => console.error(e));
+
+        history.push("/greece");
+      })
+      .catch((e) => console.error(e));
   }, []);
 
   return (
-
-    
-    
-     <div className="min-h-screen flex items-center justify-center bg-greece-img bg-cover py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-greece-img bg-fixed bg-cover py-12 px-4 sm:px-6 lg:px-8">
       <div>
-      {/* <p>Greece Picture: {pic}</p>
-      <img src={image} alt="" /> */}
-      <br />
-      <br />
-      <div className="mx-auto max-w-2xl   bg-blue-600 bg-opacity-70 mt-4 pt-6 py-4 px-4 text-blue-600 rounded-2xl text-left">
+        <div className="mx-auto max-w-2xl   bg-blue-700 bg-opacity-80  mt-16 pt-6 py-4 px-4 rounded-lg border-4 border-white">
           {" "}
-          <div>
-          {userPosts
-        ? userPosts.map(({ user, ...post}) => (
-            <div className="bg-white rounded my-4 py-4">
-              <span className="px-3 py-3"> {firstName}  {lastName}  posted: {post.PostTitle} Country: {post.Country}</span>
-              <br/>
-  
-              <br/>
-              <span className="px-3 py-3 space-y-1">{post.PostBody}</span>
-              <span className="px-3 py-3 space-y-1">{post.createdAt}</span>
-            </div>
-          ))
-          : `No posts to show yet`}
-      </div>
-      <img src="images/greece.jpg" />
-        <div className="container mx-auto px-4 mb-15 h-auto object-center ">
-          <div className="max-w-md w-full space-y-8 bg-white bg-opacity-90 px-10 pb-6 pt-4 rounded-lg border-4 border-white">
-            <div>
-              <Link to="/Greece">
-                <img
-                  className="mx-auto h-12 w-auto transform scale-250"
-                  // src={image}
-                  alt="logo"
-                />
-              </Link>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-red-700">
+          <div className="container mx-auto px-4 mb-16 h-auto object-center ">
+            <div className="max-w-md w-full mx-16 space-y-8 mt-16 bg-white bg-opacity-90 px-10 pb-6 pt-4 rounded-lg border-4 border-white">
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-blue-700">
                 All Travel Posts About Greece!
               </h2>
             </div>
-            <div className="mt-8 space-y-6">
-              <input type="hidden" name="remember" defaultValue="true" />
-              <div className="rounded-md shadow-sm -space-y-px">
-                <div>
-                  
-                </div>
-              </div>
-              
-              <p className="mt-2 text-center text-sm text-gray-600">
-                <Link
-                  to="/Posts"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  ––––All Posts About Greece!––––
-                </Link>
-              </p>
-            </div>
+          </div>
+          <div>
+            {userPosts
+              ? userPosts.map(({ user, ...post }) => (
+                  <div className="bg-white text-center rounded my-4 py-4 px-4">
+                    <span className="px-2 font-semibold text-red-700 text-xl">
+                      {format(new Date(post.createdAt), `MMMM dd, yyyy`)}
+                    </span>
+                    <span className="px-2 font-semibold text-red-700 text-xl">
+                      {" "}
+                      {post.PostTitle}
+                    </span>
+                    <span className="sr-only">{post.Country}</span>
+                    <div>
+                      <span className="px-3 py-3 space-y-1">
+                        {post.PostBody}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              : `No posts to show yet`}
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
